@@ -1,0 +1,21 @@
+CREATE TABLE users (
+   id SERIAL PRIMARY KEY,
+   name VARCHAR(255),
+   email VARCHAR(255)
+);
+
+CREATE TABLE reservations (
+   id SERIAL PRIMARY KEY,
+   user_id INT,
+   table_number VARCHAR(10),
+   date DATE,
+   FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+INSERT INTO users (name, email) VALUES
+   ('John Doe', 'john@example.com'),
+   ('Jane Smith', 'jane@example.com');
+
+INSERT INTO reservations (user_id, table_number, date) VALUES
+   (1, '101', '2024-02-06'),
+   (2, '102', '2024-02-07');
