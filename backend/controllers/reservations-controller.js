@@ -29,6 +29,7 @@ const getReservations = async (req,res,next) => {
     res.json({ reservations: reservation.rows });
 };
 
+// Function to get a reservation by its id
 const getReservationById = async (req,res,next) => {
     const reservationId = req.params.rid;
     //console.log(reservationId);
