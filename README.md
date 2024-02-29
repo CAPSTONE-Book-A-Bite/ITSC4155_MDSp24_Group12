@@ -1,4 +1,5 @@
 # Book-A-Bite
+> **_NOTE:_**  PROJECT IN PROGRESS
  
 Welcome to our restaurant reservation application for Software Development 4155!
 
