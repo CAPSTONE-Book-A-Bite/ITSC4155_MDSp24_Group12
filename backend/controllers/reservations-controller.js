@@ -31,7 +31,7 @@ const getReservations = async (req,res,next) => {
 
 const getReservationById = async (req,res,next) => {
     const reservationId = req.params.rid;
-    console.log(reservationId);
+    //console.log(reservationId);
 
     let reservation;
     try {
@@ -102,7 +102,6 @@ const createReservation = async (req, res, next) => {
         return next(error);
     }
     const format = 'YYYY-MM-DD HH:mm:ss Z';
-    // sendSMS(messageBody, from number, to number);
     //sendSMS("Hello " + createdReservation.rows[0].name + "!" + " Your reservation has been created for " + moment(datetime, format).format('MMMM Do YYYY, h:mm:ss a') + ".", +18667219742, +19517335079);
     //console.log(moment(datetime, format).format('MMMM Do YYYY, h:mm:ss a'));
     res.status(201).json({ reservation: createdReservation.rows[0] });
