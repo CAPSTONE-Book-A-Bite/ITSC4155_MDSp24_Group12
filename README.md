@@ -6,7 +6,7 @@ Welcome to our restaurant reservation application for Software Development 4155!
 - Node.js for server-side javascript (industry standard)
 - Express.js for RESTful API to perform CRUD operations
 - PostgreSQL for backend storage
-- React.js frontend
+- Vanilla HTML, CSS, Javascript
 
 ### Tips
 - In directory you will see Frontend and Backend folders
