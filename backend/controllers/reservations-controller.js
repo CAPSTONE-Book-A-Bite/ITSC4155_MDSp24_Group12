@@ -88,7 +88,7 @@ const createReservation = async (req, res, next) => {
         // Insert a new reservation into the database
         createdReservation = await db.query(
             `INSERT INTO reservations (user_id, table_number, num_guests, datetime, name, email) 
-            SELECT $1, $2, $3, $4, u.name, u.email 
+            SELECT $1, $2, $3, $4, u.name, u.email
             FROM users AS u 
             WHERE u.id = $1 
             RETURNING *;`,
