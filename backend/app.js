@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import pg from "pg";
 import { userRouter } from './routes/users-routes.js';
+import { adminRouter } from './routes/admins-routes.js';
 import { reservationRouter } from './routes/reservations-routes.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/users', userRouter);
+app.use('/api/admin', adminRouter);
 app.use('/api/reservations', reservationRouter);
 
 const db = new pg.Client({
