@@ -75,7 +75,10 @@ const getReservationsByUserId = async (req,res,next) => {
 };
 
 const createReservation = async (req, res, next) => {
-    const { userId, table_number, num_guests, datetime } = req.body;
+    const { user_id, restaurant_id, table_number, num_guests, datetime } = req.body;
+
+    let user;
+    let restaurant;
 
     // Validate the input data
     const errors = validationResult(req);
@@ -85,25 +88,50 @@ const createReservation = async (req, res, next) => {
 
     let createdReservation;
     try {
+        // Check if the user exists
+        const userQuery = await db.query('SELECT * FROM users WHERE id = $1', [user_id]);
+        user = userQuery.rows[0];
+        if (!user) {
+            // If the user does not exist, handle the error
+            console.error('User not found for user_id:', user_id);
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        // Check if Restaurant exists
+        const restaurantQuery = await db.query('SELECT * FROM restaurants WHERE id = $1', [restaurant_id]);
+        restaurant = restaurantQuery.rows[0];
+        if (!restaurant) {
+            // If the restaurant does not exist, handle the error
+            console.error('Restaurant not found for restaurant_id:', restaurant_id);
+            return res.status(404).json({ message: 'Restaurant not found.' });
+        }
+
+        // Check if a reservation already exists for the specified time and table number
+        const existingReservation = await db.query(
+            'SELECT * FROM reservations WHERE table_number = $1 AND datetime = $2 AND restaurant = $3',
+            [table_number, datetime, restaurant_id]
+        );
+
+        if (existingReservation.rows.length > 0) {
+            // If a reservation already exists, return an error response
+            return res.status(409).json({ message: 'A reservation already exists for the specified restaurant, time and table number.' });
+        }
+
         // Insert a new reservation into the database
         createdReservation = await db.query(
-            `INSERT INTO reservations (user_id, table_number, num_guests, datetime, name, email) 
-            SELECT $1, $2, $3, $4, u.name, u.email 
-            FROM users AS u 
-            WHERE u.id = $1 
+            `INSERT INTO reservations (user_id, table_number, num_guests, datetime, name, email, phone_number, restaurant) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
             RETURNING *;`,
-            [userId, table_number, num_guests, datetime]
+            [user_id, table_number, num_guests, datetime, user.name, user.email, user.phone_number, restaurant.name]
         );
     } catch (err) {
-        const error = new HttpError(
-            'Creating reservation failed, please try again.',
-            500
-        );
+        console.error('Error creating reservation:', err);
+        const error = new HttpError('Creating reservation failed, please try again.', 500);
         return next(error);
     }
+
     const format = 'YYYY-MM-DD HH:mm:ss Z';
-    //sendSMS("Hello " + createdReservation.rows[0].name + "!" + " Your reservation has been created for " + moment(datetime, format).format('MMMM Do YYYY, h:mm:ss a') + ".", +18667219742, +19517335079);
-    //console.log(moment(datetime, format).format('MMMM Do YYYY, h:mm:ss a'));
+    //sendSMS("Hello " + user.name + "!" + " Your reservation has been created for " + restaurant.name + " " + moment(datetime, format).format('MMMM Do YYYY, h:mm:ss a') + ".", +18667219742, user.phone_number);
     res.status(201).json({ reservation: createdReservation.rows[0] });
 };
 
