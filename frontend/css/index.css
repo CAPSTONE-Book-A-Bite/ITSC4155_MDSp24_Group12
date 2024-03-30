@@ -24,7 +24,7 @@ header{
     height: 75px;
     margin-left: 33%;
 }
-.Profiles{
+.Nav{
     display: flex;
     gap: 5%;
     align-items: center;
