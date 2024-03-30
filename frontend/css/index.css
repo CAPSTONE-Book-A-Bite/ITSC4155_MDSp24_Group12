@@ -11,7 +11,7 @@ header {
     background-color: white;
 }
 
-.Name {
+.name {
     margin-left: 15%;
 }
 
@@ -20,7 +20,7 @@ header {
     margin-left: 33%;
 }
 
-.Nav {
+.nav {
     display: flex;
     gap: 5%;
     align-items: center;
@@ -39,7 +39,7 @@ body {
     background-color: orange;
 }
 
-.Intro {
+.intro {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2%;
@@ -49,7 +49,7 @@ body {
     gap: 5%;
 }
 
-.Statement {
+.statement {
     font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
@@ -57,19 +57,19 @@ body {
     border: solid black 5px;
 }
 
-.Image>img {
+.image>img {
     width: 600px;
     border: solid black 5px;
     box-shadow: 10px 10px 8px blue;
 }
 
-.Booking {
+.booking {
     align-items: center;
     text-align: center;
     color: white;
 }
 
-.BookButton {
+.bookButton {
     display: inline-block;
     border: solid white 5px;
     padding: 10px;
@@ -77,7 +77,7 @@ body {
     box-shadow: 10px 10px 8px blue;
 }
 
-.BookButton:hover {
+.bookButton:hover {
     cursor: pointer;
     background-color: blue;
     color: white;
