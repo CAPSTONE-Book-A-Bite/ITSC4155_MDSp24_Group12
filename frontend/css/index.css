@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
 /* Header styles -Start****************************************/
 header {
     /*display: flex;
@@ -47,10 +49,20 @@ header {
 
 /* Body styles -Start****************************************/
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Figtree', sans-serif;
     margin: 0;
     padding: 0;
     background-color: orange;
+}
+
+img {
+    display: block;
+    background: 50% / cover no-repeat;
+    max-width: 767px;
+    max-height: 501px;
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .intro {
@@ -65,16 +77,10 @@ body {
 
 .statement {
     font-size: 25px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Figtree', sans-serif;
     text-align: center;
     box-shadow: 10px 10px 8px lightskyblue;
     border: solid black 5px;
-}
-
-.image>img {
-    width: 600px;
-    border: solid black 5px;
-    box-shadow: 10px 10px 8px lightskyblue;
 }
 
 .booking {
@@ -88,15 +94,17 @@ body {
     border: solid white 5px;
     padding: 10px;
     background: black;
-    box-shadow: 10px 10px 8px lightskyblue;
+    /*box-shadow: 10px 10px 8px lightskyblue;*/
+
+    font-family: 'Figtree', sans-serif;
 }
 
 .bookButton:hover {
     cursor: pointer;
     background-color: lightskyblue;
     color: white;
-    padding: 20px;
-    box-shadow: 0px 0px 10px lightskyblue;
+    padding: 10px;
+    /* box-shadow: 0px 0px 10px lightskyblue; */
 }
 
 /* Body styles -End****************************************/
