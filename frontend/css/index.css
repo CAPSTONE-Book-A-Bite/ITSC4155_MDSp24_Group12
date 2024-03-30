@@ -28,6 +28,20 @@ header {
     margin-right: 15%;
 }
 
+.nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.nav a:hover {
+    color: lightskyblue;
+}
+
+.nav a:active {
+    color: lightskyblue;
+}
+
 /* Header styles -End****************************************/
 
 
@@ -53,14 +67,14 @@ body {
     font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    box-shadow: 10px 10px 8px blue;
+    box-shadow: 10px 10px 8px lightskyblue;
     border: solid black 5px;
 }
 
 .image>img {
     width: 600px;
     border: solid black 5px;
-    box-shadow: 10px 10px 8px blue;
+    box-shadow: 10px 10px 8px lightskyblue;
 }
 
 .booking {
@@ -74,15 +88,15 @@ body {
     border: solid white 5px;
     padding: 10px;
     background: black;
-    box-shadow: 10px 10px 8px blue;
+    box-shadow: 10px 10px 8px lightskyblue;
 }
 
 .bookButton:hover {
     cursor: pointer;
-    background-color: blue;
+    background-color: lightskyblue;
     color: white;
     padding: 20px;
-    box-shadow: 0px 0px 10px blue;
+    box-shadow: 0px 0px 10px lightskyblue;
 }
 
 /* Body styles -End****************************************/
