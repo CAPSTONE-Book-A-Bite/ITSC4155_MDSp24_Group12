@@ -1,12 +1,5 @@
-/* Basic styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: orange;
-}
-
-header{
+/* Header styles -Start****************************************/
+header {
     /*display: flex;
     justify-content: space-around;
     color: blue;
@@ -14,60 +7,82 @@ header{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
-    border-bottom:solid black 5px;
+    border-bottom: solid black 5px;
     background-color: white;
 }
-.Name{
+
+.Name {
     margin-left: 15%;
 }
-.logo img{
+
+.logo img {
     height: 75px;
     margin-left: 33%;
 }
-.Nav{
+
+.Nav {
     display: flex;
     gap: 5%;
     align-items: center;
     text-align: center;
     margin-right: 15%;
 }
-.Intro{
+
+/* Header styles -End****************************************/
+
+
+/* Body styles -Start****************************************/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: orange;
+}
+
+.Intro {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:5%;
+    gap: 5%;
 }
-.Statement{
+
+.Statement {
     font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     box-shadow: 10px 10px 8px blue;
     border: solid black 5px;
 }
-.Image > img{
+
+.Image>img {
     width: 600px;
-    border:solid black 5px;
+    border: solid black 5px;
     box-shadow: 10px 10px 8px blue;
 }
-.Booking{
+
+.Booking {
     align-items: center;
     text-align: center;
     color: white;
 }
-.BookButton{
+
+.BookButton {
     display: inline-block;
     border: solid white 5px;
     padding: 10px;
     background: black;
     box-shadow: 10px 10px 8px blue;
 }
-.BookButton:hover{
+
+.BookButton:hover {
     cursor: pointer;
     background-color: blue;
     color: white;
     padding: 20px;
     box-shadow: 0px 0px 10px blue;
 }
+
+/* Body styles -End****************************************/
