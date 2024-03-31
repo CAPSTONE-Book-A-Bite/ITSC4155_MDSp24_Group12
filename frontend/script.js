@@ -44,4 +44,4 @@ menuBtn.addEventListener('click', () => {
 });
 closeMenuBtn.addEventListener('click', () => {
   header.classList.remove('show-menu');
-}
+});
