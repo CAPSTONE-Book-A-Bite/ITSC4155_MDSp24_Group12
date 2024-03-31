@@ -36,6 +36,7 @@ header.navbar {
 
 .navbar .menu-links {
     display: flex;
+    justify-content: space-evenly;
     list-style: none;
     gap: 35px;
 }
