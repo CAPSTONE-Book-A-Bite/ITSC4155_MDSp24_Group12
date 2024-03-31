@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree', sans-serif;
+}
 /* Header styles -Start****************************************/
 header {
     position: fixed;
@@ -7,7 +13,6 @@ header {
     left: 0;
     width: 100%;
     padding: 20px;
-    font-family: 'Figtree', sans-serif;
 }
 
 header.navbar {
@@ -23,6 +28,10 @@ header.navbar {
     font-weight: 600;
     color: white;
     text-decoration: none;
+}
+
+.navbar .logo span {
+    color: lightskyblue;
 }
 
 .navbar .menu-links {
@@ -45,7 +54,122 @@ header.navbar {
 /* Banner styles -Start**************************************/
 .banner-section {
     height: 100vh;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/background.png');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('/images/background.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.banner-section .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    color:white;
+}
+
+.banner-section .content h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 70px;
+}
+
+.banner-section .content p {
+    font-weight: 300;
+    max-width: 600px;
+    margin-top: 15px;
+}
+
+.banner-section .content button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 16px;
+    border: 2px solid white;
+    background: black;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: 0.2s ease;
+}
+
+.banner-section .content button:hover {
+    background: lightskyblue;
+    border-color: lightskyblue;
+    color: white;
+}
+
+/* Close button style */
+#close-menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Menu button style */
+#menu-btn {
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+/* Responsive Web Design */
+@media (max-width: 768px) {
+    header.navbar {
+        padding: 10px;
+    }
+    .navbar .logo {
+        font-size: 1.7rem;
+    }
+    .navbar .menu-links {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background: black;
+        flex-direction: column;
+        padding: 70px 40px 0;
+        transition: left 0.2s ease;
+    }
+    .navbar a {
+        color: white;
+    }
+    #close-menu-btn, #menu-btn {
+        display: block;
+        color: white;
+    }
+
+    header.show-menu::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(5px);
+    }
+
+    header.show-menu .navbar .menu-links {
+        left: 0;
+    }
+
+    /* Responsive Banner Section */
+    .banner-section .content {
+        text-align: center;
+    }
+    .banner-section .content :is(h2,p) {
+        max-width: 100%;
+    }
+    .banner-section .content h2 {
+        font-size: 1.8rem;
+        line-height: 60px;
+    }
+    .banner-section .content button {
+        padding: 9px 18px;
+    }
 }
 
 
