@@ -2,10 +2,8 @@
 
 /* Header styles -Start****************************************/
 header {
-    /*display: flex;
-    justify-content: space-around;
-    color: blue;
-    align-items: center;*/
+    justify-content: space-between;
+    align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
@@ -13,17 +11,45 @@ header {
     background-color: white;
 }
 
+a {
+    display: inline-flex;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none; /* removes underline from text */
+
+    position: relative;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+a:visited {
+    color: black;
+}
+
 .name {
     margin-left: 15%;
 }
 
+.logo {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .logo img {
-    height: 75px;
-    margin-left: 33%;
+    display: inline-flex;
+    height: auto;
+    max-height: 100px;
+    border-radius: 0;
+
+    position: relative;
 }
 
 .nav {
-    display: flex;
+    display: inline-block;
     gap: 5%;
     align-items: center;
     text-align: center;
@@ -43,6 +69,44 @@ header {
 .nav a:active {
     color: lightskyblue;
 }
+
+.reserve {
+    display: inline-block;
+    align-items: middle;
+    margin-left: 15%;
+    
+    background-color: black;
+    color: white;
+    
+    padding: 10px;
+    height: auto;
+    width: auto;
+
+    max-height: 100px;
+    max-width: 250px;
+
+    font-size: auto;   
+}
+
+.reserve:hover {
+    cursor: pointer;
+    background-color: lightskyblue;
+    color: white;
+}
+
+@media (max-width: 768px) {  /* Target screens less than 768px wide */
+    header {
+      flex-direction: column;  /* Stack elements vertically on smaller screens */
+      align-items: center;  /* Center elements horizontally */
+    }
+  
+    .nav,
+    .reserve {
+      /* Remove inline-block styles or margins (if previously applied) */
+      display: block;  /* Make elements fill the width of the container */
+      margin: 0 auto 5px;  /* Add some margin for spacing */
+    }
+  }
 
 /* Header styles -End****************************************/
 
