@@ -30,8 +30,8 @@ header.navbar {
     text-decoration: none;
 }
 
-.navbar .logo span {
-    color: lightskyblue;
+.navbar .logo img {
+    height: 100px;
 }
 
 .navbar .menu-links {
