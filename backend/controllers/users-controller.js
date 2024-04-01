@@ -39,7 +39,7 @@ const signup = async (req, res, next) => {
     existingUser = result.rows[0].exists;
   } catch (error) {
     console.error(error);
-    res.status(500).send("An error occurred while checking for existing user.");
+    return res.status(500).send("An error occurred while checking for existing user.");
   }
 
   if (existingUser) {
@@ -71,7 +71,6 @@ const signup = async (req, res, next) => {
 
 let result;
 try {
-    // Assuming db is your PostgreSQL client
     const queryText = 'INSERT INTO users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING *';
     const values = [createdUser.name, createdUser.email, createdUser.password, createdUser.phone];
     result = await db.query(queryText, values);
@@ -79,7 +78,6 @@ try {
     // If you need to access the newly inserted user data, you can retrieve it from the result
     //const insertedUser = result.rows[0];
     
-    // Further logic can be added here if needed
 } catch (err) {
     const error = new HttpError(
       'Signing up failed, please try again later.',
@@ -134,7 +132,7 @@ const login = async (req,res,next) => {
     );
     return next(error);
   }
-  // succes message just to see it logged in
+  // success message just to see it logged in
   const success = "Logged in!";
   res.json({
     email: email,
