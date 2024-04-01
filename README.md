@@ -22,7 +22,7 @@ Welcome to our restaurant reservation application for Software Development 4155!
 - Abrar Mian
 - Cayden Renegar Submission Test
 
-### Book-A-Bite: D2 Design Document   
+# Book-A-Bite: D2 Design Document   
 
 # 1.  Project Overview      
 
