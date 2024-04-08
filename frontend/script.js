@@ -45,3 +45,43 @@ menuBtn.addEventListener('click', () => {
 closeMenuBtn.addEventListener('click', () => {
   header.classList.remove('show-menu');
 });
+
+const reserveBtn = document.getElementById("reserve-btn");
+
+reserveBtn.addEventListener("click", reserveTable);
+
+function reserveTable() {
+  console.log("Reserve button clicked");
+  const userId = document.getElementById("user-id").value;
+  const tableNumber = document.getElementById("table-number").value;
+  const numGuests = document.getElementById("num-guests").value;
+  const datetime = document.getElementById("datetime").value;
+
+  const reservation = {
+    table_number: tableNumber,
+    num_guests: numGuests,
+    datetime: datetime
+  };
+  // javascript code to reserve a table; POST request
+  fetch('http://localhost:3001/api/reservations', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(reservation),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to create reservation');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Reservation created:', data);
+      alert('Reservation created successfully');
+    })
+    .catch(error => {
+      console.error('Error creating reservation:', error);
+      alert('Failed to create reservation');
+    });
+}
