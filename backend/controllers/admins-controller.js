@@ -12,14 +12,14 @@ const db = new pg.Client({
 // Just logging the connection
 db.connect()
 
-const getUsers = async (req, res) => {
-  let users;
+const getAdmins = async (req, res) => {
+  let admins;
   try {
-    users = await db.query('select * from users;');
+    admins = await db.query('select * from restaurants;');
   } catch (error) {
     res.send(error);
   }
-  res.json({ users: users.rows });
+  res.json({ users: admins.rows });
 };
 
 // working here in signup
@@ -31,20 +31,20 @@ const signup = async (req, res, next) => {
     );
   }
 
-  const { name, email, password, phone } = req.body;
+  const { name, email, password } = req.body;
 
-  let existingUser;
+  let existingAdmin;
   try {
-    const result = await db.query('SELECT EXISTS(SELECT 1 FROM users WHERE email = $1);', [email]);
-    existingUser = result.rows[0].exists;
+    const result = await db.query('SELECT EXISTS(SELECT 1 FROM restaurants WHERE email = $1);', [email]);
+    existingAdmin = result.rows[0].exists;
   } catch (error) {
     console.error(error);
-    return res.status(500).send("An error occurred while checking for existing user.");
+    res.status(500).send("An error occurred while checking for existing admin.");
   }
 
-  if (existingUser) {
+  if (existingAdmin) {
     const error = new HttpError(
-      'User exists already, please login instead.',
+      'Admin exists already, please login instead.',
       422
     );
     return next(error);
@@ -55,29 +55,30 @@ const signup = async (req, res, next) => {
     hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
     const error = new HttpError(
-      'Could not create user, please try again.',
+      'Could not create admin, please try again.',
       500
     );
     return next(error);
   }
 
   // change to sql
-  const createdUser = {
+  const createdAdmin = {
     name,
     email,
-    password: hashedPassword,
-    phone
+    password: hashedPassword
 };
 
 let result;
 try {
-    const queryText = 'INSERT INTO users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING *';
-    const values = [createdUser.name, createdUser.email, createdUser.password, createdUser.phone];
+    // Assuming db is your PostgreSQL client
+    const queryText = 'INSERT INTO restaurants (name, email, password) VALUES ($1, $2, $3) RETURNING *';
+    const values = [createdAdmin.name, createdAdmin.email, createdAdmin.password];
     result = await db.query(queryText, values);
     
     // If you need to access the newly inserted user data, you can retrieve it from the result
     //const insertedUser = result.rows[0];
     
+    // Further logic can be added here if needed
 } catch (err) {
     const error = new HttpError(
       'Signing up failed, please try again later.',
@@ -88,16 +89,16 @@ try {
 
   res
     .status(201)
-    .json({ name: createdUser.name, email: createdUser.email, phone: createdUser.phone});
+    .json({ name: createdAdmin.name, email: createdAdmin.email });
 };
 
 const login = async (req,res,next) => {
   const { email, password } = req.body;
 
-  let existingUser;
+  let existingAdmin;
 
   try {
-    existingUser = await db.query('SELECT * FROM users WHERE email = $1;', [email]);
+    existingAdmin = await db.query('SELECT * FROM restaurants WHERE email = $1;', [email]);
   } catch (err) {
     const error = new HttpError(
       'Logging in failed, please try again later.',
@@ -106,7 +107,7 @@ const login = async (req,res,next) => {
     return next(error);
   }
 
-  if (!existingUser) {
+  if (!existingAdmin) {
     const error = new HttpError(
       'Invalid credentials, could not log you in.',
       403
@@ -116,7 +117,7 @@ const login = async (req,res,next) => {
 
   let isValidPassword = false;
   try {
-    isValidPassword = await bcrypt.compare(password, existingUser.rows[0].password);
+    isValidPassword = await bcrypt.compare(password, existingAdmin.rows[0].password);
   } catch (err) {
     const error = new HttpError(
       'Could not log you in, please check your credentials and try again.',
@@ -132,7 +133,7 @@ const login = async (req,res,next) => {
     );
     return next(error);
   }
-  // success message just to see it logged in
+  // succes message just to see it logged in
   const success = "Logged in!";
   res.json({
     email: email,
@@ -140,6 +141,6 @@ const login = async (req,res,next) => {
   });
 };
 
-export { getUsers };
+export { getAdmins };
 export { signup };
 export { login };
