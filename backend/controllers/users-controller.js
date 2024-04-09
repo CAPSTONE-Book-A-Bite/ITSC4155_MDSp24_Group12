@@ -1,6 +1,5 @@
 import pg from "pg";
 import HttpError from "../models/http-error.js";
-import bcrypt from 'bcrypt';
 import { validationResult } from "express-validator";
 
 const db = new pg.Client({
@@ -50,22 +49,11 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  let hashedPassword;
-  try {
-    hashedPassword = await bcrypt.hash(password, 12);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not create user, please try again.',
-      500
-    );
-    return next(error);
-  }
-
   // change to sql
   const createdUser = {
     name,
     email,
-    password: hashedPassword,
+    password,
     phone
 };
 
@@ -108,7 +96,7 @@ const login = async (req,res,next) => {
 
   if (!existingUser) {
     const error = new HttpError(
-      'Invalid credentials, could not log you in.',
+      'Invalid email, could not log you in.',
       403
     );
     return next(error);
@@ -116,8 +104,10 @@ const login = async (req,res,next) => {
 
   let isValidPassword = false;
   try {
-    isValidPassword = await bcrypt.compare(password, existingUser.rows[0].password);
-  } catch (err) {
+    if (password === existingUser.rows[0].password) {
+      isValidPassword = true;
+    }
+    } catch (err) {
     const error = new HttpError(
       'Could not log you in, please check your credentials and try again.',
       500
