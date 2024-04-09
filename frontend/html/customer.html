@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <!-- Create Customer page that is after you login, stores the reservations the customer has and also displays the resteraunts which a customer can select to book from-->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Description to match platform usage-->
+        <meta name="description"
+          content="Book-A-Bite is a web application that allows users to reserve tables at restaurants.">
+        <!--Title to match platform name -->
+        <title>Book-A-Bite</title>
+        <!--Link to css file -->
+        <link rel="stylesheet" href="../css/customer.css">
+      </head>
+      <header-component></header-component>
+
+
+<body>
+    <div class="customer-container">
+        <h1 id="customer-name">Hello, ${user.name}</h1>
+        <div class = "upcoming-reservations">
+            <h2>Upcoming Reservations</h2>
+            <p id="no-reservations">No Reservations</p>
+        </div>
+        <div class="reservation-list">
+            <!-- table element-->
+            <table id="reservation-table">
+                <tr>
+                    <th>Restaurant</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Party Size</th>
+                    <th>Cancel</th>
+                </tr>
+                <div class="reservation">
+                <tr><td>${reservation.restaurant}</td>
+                    <td>${date}</td>
+                    <td>${time}</td>
+                    <td>${reservation.num_guests}</td>
+                    <td><button class="cancel-button" id="cancel-button">Cancel</button></td>
+                </tr>
+                </div>
+            </table>
+        </div>
+
+        <div class="restaurant-list">
+                <h2>Restaurants in Your Area</h2>
+                <p id="no-resteraunts">Book-A-Bite in One of These Tasty Food Spots!</p>
+                <div class="restaurant-info">
+                    <h3 class="restaurant-name">${restaurant.name}</h3>
+                    <p class="restaurant-address">${restaurant.address}</p>
+                    <p class="restaurant-phone">${restaurant.phone}</p>
+                    <p class="restaurant-email">${restaurant.email}</p>
+                </div>
+                <div class="restaurant-info">
+                    <h3 class="restaurant-name">${restaurant.name}</h3>
+                    <p class="restaurant-address">${restaurant.address}</p>
+                    <p class="restaurant-phone">${restaurant.phone}</p>
+                    <p class="restaurant-email">${restaurant.email}</p>
+                </div>
+                <div class="restaurant-info">
+                    <h3 class="restaurant-name">${restaurant.name}</h3>
+                    <p class="restaurant-address">${restaurant.address}</p>
+                    <p class="restaurant-phone">${restaurant.phone}</p>
+                    <p class="restaurant-email">${restaurant.email}</p>
+                </div>
+                <div class="restaurant-info">
+                    <h3 class="restaurant-name">${restaurant.name}</h3>
+                    <p class="restaurant-address">${restaurant.address}</p>
+                    <p class="restaurant-phone">${restaurant.phone}</p>
+                    <p class="restaurant-email">${restaurant.email}</p>
+                </div>
+        </div>
+    </div>
+</body>
+<script src="../components/header.js"></script>
+<script src="../components/customer.js"></script>
+</html>

@@ -12,19 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Array.isArray(reservations)) {
           reservations = reservations.filter(reservation => reservation.user_id === localStorage.getItem("userId"));
           reservations.forEach(reservation => {
+            const date = reservation.datetime.split(' ')[0];
+            const time = reservation.datetime.split(' ')[1];
             const reservationDiv = document.createElement('div');
             reservationDiv.classList.add('reservation');
-            reservationDiv.innerHTML = `
-                <div class="reservation-info">
-                    <h2 class="reservation-id">Reservation ID: ${reservation.id}</h2>
-                    <p class="user-id">User ID: ${reservation.user_id}</p>
-                    <p class="table-number">Table Number: ${reservation.table_number}</p>
-                    <p class="num-guests">Number of Guests: ${reservation.num_guests}</p>
-                    <p class="datetime">Date and Time: ${reservation.datetime}</p>
-                </div>
-            `;
+            reservationDiv.innerHTML = `<tr><td>${reservation.restaurant}</td>
+                <td>${date}</td>
+                <td>${time}</td>
+                <td>${reservation.num_guests}</td>
+                <td><button class="cancel-button" id="cancel-button">Cancel</button></td>
+                </tr>`;
             reservationList.appendChild(reservationDiv);
           });
+          // if reservation is in the next 24 hours change no-reservation id to let you know about reservation
+
+            const now = new Date();
+            const nextDay = new Date(now);
+            nextDay.setDate(now.getDate() + 1);
+            const nextDayString = nextDay.toISOString().split('T')[0];
+            const nextDayReservations = reservations.filter(reservation => reservation.datetime.split('T')[0] === nextDayString);
+            if (nextDayReservations.length > 0) {
+              const noReservation = document.getElementById('no-reservation');
+              noReservation.innerHTML = 'You have a reservation in the next 24 hours!';
+            }
         } else {
           throw new Error('Invalid response format');
         }
@@ -68,22 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json(); // Parse the JSON data
       })
       .then(data => {
-        const restaurantList = document.getElementById('resteraunt-list');
-        const restaurants = data.restaurants; // Access the reservations array
+        const restaurantContainer = document.getElementById('restaurant-container');
+        const restaurants = data.restaurants; // Access the restaurants array
         if (Array.isArray(restaurants)) {
-          restaurants.forEach(restaurant => {
-            const restaurantDiv = document.createElement('div');
-            restaurantDiv.classList.add('restaurant');
-            restaurantDiv.innerHTML = `
-                <div class="restaurant-info">
-                    <h2 class="restaurant-id">Restaurant ID: ${restaurant.id}</h2>
-                    <p class="restaurant-name">Restaurant Name: ${restaurant.name}</p>
-                    <p class="restaurant-address">Restaurant Address: ${restaurant.address}</p>
-                    <p class="restaurant-phone">Restaurant Phone: ${restaurant.phone}</p>
-                    <p class="restaurant-email">Restaurant Email: ${restaurant.email}</p>
-                </div>
-            `;
-            restaurantList.appendChild(restaurantDiv);
+            restaurants.forEach(restaurant => {
+                const restaurantDiv = document.createElement('div');
+                restaurantDiv.classList.add('restaurant-info');
+                restaurantDiv.innerHTML = `
+                        <h3 class="restaurant-name">${restaurant.name}</h3>
+                        <p class="restaurant-address">${restaurant.address}</p>
+                        <p class="restaurant-phone">${restaurant.phone}</p>
+                        <p class="restaurant-email">${restaurant.email}</p>
+                `;
+                restaurantContainer.appendChild(restaurantDiv);
             });
         }
         else {

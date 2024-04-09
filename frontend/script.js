@@ -19,9 +19,9 @@ const reserveBtn = document.getElementById("reserve-btn");
 reserveBtn.addEventListener("click", () => {
   const userId = localStorage.getItem("userId");
   if (!userId) {
-    window.location.href = "/frontend/html/login.html";
+    window.location.href = "../frontend/html/login.html";
   } else {
-    window.location.href = "/frontend/html/customer.html";
+    window.location.href = "../frontend/html/customer.html";
   }
 }
 );
