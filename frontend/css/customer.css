@@ -123,10 +123,28 @@ body{
     text-align: center;
     font-size: 24px;
 }
-
+#no-restaurants p {
+    text-align: center;
+    font-size: 18px;
+    background-color: #007bff !important;
+}
 .restaurant-list p,
 #restaurant-container p {
     margin-bottom: 10px;
     text-align: center;
     font-size: 18px;
+}
+
+
+.restaurant-list button,
+#restaurant-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }

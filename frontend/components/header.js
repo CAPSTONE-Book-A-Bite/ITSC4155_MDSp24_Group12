@@ -67,7 +67,7 @@ header.navbar {
                 <a href='../index.html' class="logo"><img src="../../images/Logo.png" alt="logo"></img></a>
                 <li><a class="active" href="../index.html">Home</a></li>
                 <li><a href="../html/about.html">About</a></li>
-                <li><a href="../html/contact.html">Contact</a></li>
+                <li><a href="../html/hostLogin.html">Host Sign In</a></li>
                 <li><a href="../html/login.html">Login</a></li>
                 <li><a class="reserve" href="">Reserve</a></li>
             </ul>

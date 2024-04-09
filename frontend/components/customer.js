@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="restaurant-address">${restaurant.address}</p>
                         <p class="restaurant-phone">${restaurant.phone}</p>
                         <p class="restaurant-email">${restaurant.email}</p>
+                        <button class="book-button" id="book-button">Book</button>
                 `;
                 restaurantContainer.appendChild(restaurantDiv);
             });
@@ -101,6 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
           console.error('Error fetching restaurants:', error);
           // Handle error
+        });
+    }
+    );
+
+    let booking =  document.querySelectorAll(".restaurant-info")
+
+
+    // create event listeners for all
+    booking.forEach((book) => {
+        book.addEventListener('click', async (event) => {
+            const restaurantName = book.querySelector('.restaurant-name').innerText;
+            console.log(restaurantName);
+
+            // redirect to reservation page with params
+            window.location.href = `../html/reservation.html?restaurant=${restaurantName}`;
         });
     }
     );

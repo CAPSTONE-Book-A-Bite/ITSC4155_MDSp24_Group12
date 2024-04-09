@@ -81,7 +81,6 @@ button:focus {
 .imagea img {
     width: 50%;
     height: 50%;
-    border-radius: 75px;
     margin-bottom: 150px;
     border: 2px solid #ccc;
 }
