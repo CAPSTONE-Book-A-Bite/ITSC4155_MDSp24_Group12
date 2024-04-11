@@ -6,13 +6,18 @@ import { adminRouter } from './routes/admins-routes.js';
 import { reservationRouter } from './routes/reservations-routes.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import methodOverride from 'method-override';
 dotenv.config();
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(methodOverride('_method'));
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// Enable CORS
+app.use(cors({
+  origin: '*',
+}));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

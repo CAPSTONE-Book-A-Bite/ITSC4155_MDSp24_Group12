@@ -1,4 +1,5 @@
 document.getElementById("login-form").addEventListener("submit", async (event) => {
+    event.preventDefault(); // Prevent default form
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const loginData = { email, password };
