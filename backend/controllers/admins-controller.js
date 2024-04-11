@@ -109,7 +109,7 @@ const login = async (req,res,next) => {
 
   if (!existingAdmin) {
     const error = new HttpError(
-      'Invalid credentials, could not log you in.',
+      'Invalid admin user, could not log you in.',
       403
     );
     return next(error);
@@ -117,7 +117,9 @@ const login = async (req,res,next) => {
 
   let isValidPassword = false;
   try {
-    isValidPassword = await bcrypt.compare(password, existingAdmin.rows[0].password);
+    if (password === existingAdmin.rows[0].password){
+      isValidPassword = true;
+    };
   } catch (err) {
     const error = new HttpError(
       'Could not log you in, please check your credentials and try again.',
