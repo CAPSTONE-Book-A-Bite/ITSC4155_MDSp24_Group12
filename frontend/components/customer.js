@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // fetch userInfo
 
-    fetch('http://localhost:3001/api/users')
+    fetch('http://localhost:3001/api/users/')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch users');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // fetch resteraunts the user can book
 
-    fetch('http://localhost:3001/api/restaurants')
+    fetch('http://localhost:3001/api/admin/')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch restaurants');

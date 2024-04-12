@@ -17,7 +17,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
         }
         localStorage.setItem("userId", data.userId);
         // Redirect to home page
-        window.location.href = "/frontend/customer.html";
+        window.location.href = "../html/customer.html";
     } catch (error) {
         alert(error.message);
     }
