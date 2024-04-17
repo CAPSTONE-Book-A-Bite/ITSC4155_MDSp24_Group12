@@ -11,31 +11,6 @@ import { dirname } from 'path';
 dotenv.config();
 
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-app.use(express.static(__dirname + '/frontend'));
-
-//route frontend hrefs to correct files
-app.get('/index.html', (req, res) => {
-  res.sendFile(__dirname + '/frontend/index.html');
-});
-
-app.get('/login', (req, res) => {
-  res.sendFile(__dirname + '/frontend/html/login.html');
-});
-
-app.get('/hostLogin', (req, res) => {
-  res.sendFile(__dirname + '/frontend/html/hostLogin.html');
-});
-
-app.get('/about', (req, res) => {
-  res.sendFile(__dirname + '/frontend/html/about.html');
-});
-
-app.get('/customer', (req, res) => {
-  res.sendFile(__dirname + '/frontend/html/customer.html');
-} );
-
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));

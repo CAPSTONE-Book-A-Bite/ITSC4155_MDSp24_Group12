@@ -115,6 +115,26 @@ const login = async (req,res,next) => {
     return res.status(403).json({error: "Invalid credentials, could not log you in."});
   }
 
+  let isValidPassword = false;
+  try {
+    if (password === existingUser.rows[0].password){
+      isValidPassword = true;
+    };
+  } catch (err) {
+    const error = new HttpError(
+      'Could not log you in, please check your credentials and try again.',
+      500
+    );
+    return next(error);
+  }
+
+  if (!isValidPassword) {
+    const error = new HttpError(
+      'Invalid credentials, could not log you in.',
+      403
+    );
+    return next(error);
+  }
   // success message just to see it logged in
   const success = "Logged in!";
   console.log(success)
