@@ -14,7 +14,7 @@ header {
     width: 100%;
     height: 95px;
     padding: 20px;
-    background: url(../../images/background.png) center/cover no-repeat;
+    background: url(../images/background.png) center/cover no-repeat;
 }
 
 header.navbar {
@@ -64,11 +64,11 @@ header.navbar {
                 <!--Link for title-->
                 <a href='../index.html'>Book-A-Bite</a>
                 <!--Link for logo-->
-                <a href='../index.html' class="logo"><img src="../../images/Logo.png" alt="logo"></img></a>
-                <li><a class="active" href="../index.html">Home</a></li>
-                <li><a href="../html/about.html">About</a></li>
-                <li><a href="../html/hostLogin.html">Host Sign In</a></li>
-                <li><a href="../html/login.html">Login</a></li>
+                <a href='../index.html' class="logo"><img src="../images/Logo.png" alt="logo"></img></a>
+                <li><a class="active" href="/index">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/hostLogin">Host Sign In</a></li>
+                <li><a href="/login">Login</a></li>
                 <li><a class="reserve" href="">Reserve</a></li>
             </ul>
             </div>

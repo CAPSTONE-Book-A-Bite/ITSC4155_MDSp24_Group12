@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:3001/api/reservations')
+  //check if user is logged in and redirect to login page if not
+  const userId = localStorage.getItem("userId");
+  if (!userId) {
+    window.location.href = "/login";
+  }  
+  
+  
+  
+  fetch('http://localhost:3001/api/reservations')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch reservations');
@@ -7,22 +15,40 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json(); // Parse the JSON data
       })
       .then(data => {
-        const reservationList = document.getElementById('reservation-list');
+        // reservation list is class name of the div where the reservations will be displayed
+        const reservationList = document.getElementById('reservation-table');
+        //get the table body element inside the reservation table
+        document.getElementById('reservation-table').innerHTML = `<tr>
+        <th>Restaurant</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Party Size</th>
+        <th>Cancel</th>
+        </tr>`;
         let reservations = data.reservations; // Access the reservations array
+        console.log(JSON.stringify(reservations) + "before filter")
         if (Array.isArray(reservations)) {
-          reservations = reservations.filter(reservation => reservation.user_id === localStorage.getItem("userId"));
+          //log the userId in local Storage
+          console.log(localStorage.getItem("userId"));
+        
+          // filter reservations to only show the ones that are made by the user
+          reservations = reservations.filter(reservation => reservation.user_id == localStorage.getItem("userId"));
+          console.log(reservations);
+          let reservationCount = 1;
           reservations.forEach(reservation => {
-            const date = reservation.datetime.split(' ')[0];
-            const time = reservation.datetime.split(' ')[1];
-            const reservationDiv = document.createElement('div');
-            reservationDiv.classList.add('reservation');
-            reservationDiv.innerHTML = `<tr><td>${reservation.restaurant}</td>
-                <td>${date}</td>
-                <td>${time}</td>
-                <td>${reservation.num_guests}</td>
-                <td><button class="cancel-button" id="cancel-button">Cancel</button></td>
-                </tr>`;
-            reservationList.appendChild(reservationDiv);
+            const date = reservation.datetime.split('T')[0];
+            const time = reservation.datetime.split('T')[1].split('.')[0];
+
+            // create a new row for each reservation
+            const row = reservationList.insertRow(reservationCount);
+            row.innerHTML = `
+            <td>${reservation.restaurant}</td>
+            <td>${date}</td>
+            <td>${time}</td>
+            <td>${reservation.num_guests}</td>
+            <td><button class="cancel-button" id="cancel-button">Cancel</button></td>
+            `;
+            reservationCount++;
           });
           // if reservation is in the next 24 hours change no-reservation id to let you know about reservation
 
@@ -58,9 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const customerName = document.getElementById('customer-name');
         // populate customer name with the user in the array that shares sameId in local storage
         const users = data.users;
+        console.log(`users: ${JSON.stringify(users)}`);
         const userId = localStorage.getItem("userId");
-        const user = users.find(user => user.id === userId);
-        customerName.innerHTML = "Hello,"+ user.name;
+        console.log(`userId: ${userId}`);
+        const user = users.find(user => user.id == userId);
+        console.log(`user: ${JSON.stringify(user)}`)
+        customerName.innerHTML = "Hello, "+ user.name;
       })
       .catch(error => {
         console.error('Error fetching users:', error);
@@ -70,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // fetch resteraunts the user can book
 
-    fetch('http://localhost:3001/api/restaurants')
+    fetch('http://localhost:3001/api/admin')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch restaurants');
@@ -78,8 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json(); // Parse the JSON data
       })
       .then(data => {
-        const restaurantContainer = document.getElementById('restaurant-container');
-        const restaurants = data.restaurants; // Access the restaurants array
+        console.log(data);
+        const restaurantContainer = document.getElementById('restaurant-list');
+        const restaurants = data.users; // Access the restaurants array
         if (Array.isArray(restaurants)) {
             restaurants.forEach(restaurant => {
                 const restaurantDiv = document.createElement('div');

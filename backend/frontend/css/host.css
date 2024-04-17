@@ -4,6 +4,6 @@ body{
     padding: 0;
     display: flex;
     height: 100vh;
-    background: url("../../images/background.png") no-repeat center center/cover;
+    background: url("../images/background.png") no-repeat center center/cover;
     background-size: cover;
 }

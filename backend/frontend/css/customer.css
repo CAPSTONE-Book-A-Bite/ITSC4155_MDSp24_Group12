@@ -4,7 +4,7 @@ body{
     padding: 0;
     display: flex;
     height: 100vh;
-    background: url("../../images/background.png") no-repeat center center/cover;
+    background: url("../images/background.png") no-repeat center center/cover;
     background-size: cover;
 
 }
@@ -31,7 +31,7 @@ body{
     width: auto;
 }
 
-.reservation-list{
+#reservation-list{
     background-color: #fff;
     padding: 20px;
     border-radius: 50px;
@@ -43,7 +43,7 @@ body{
     width: auto;
 }
 
-.reservation-list h2{
+#reservation-list h2{
     margin-bottom: 20px;
     text-align: center;
 }
@@ -61,11 +61,50 @@ body{
     font-weight: bold;
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #e66114;
-    border-left: 1px solid #e66114;
-    border-top: 1px solid #e66114;
-    border-right: 1px solid #e66114;
+    border-bottom: 3px solid #e66114;
+    border-left: 3px solid #e66114;
+    border-top: 3px solid #e66114;
+    border-right: 3px solid #e66114;
 
+}
+#reservation-table td {
+    padding: 8px;
+    border-bottom: 2px solid #e66114; 
+    border-left: 2px solid #e66114;
+    border-top: 2px solid #e66114;
+    border-right: 2px solid #e66114;
+}
+  
+  /* Table Row */
+  #reservation-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Table Data Cells */
+  #reservation-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd; 
+  }
+  
+  /* Hover effect on table row */
+  #reservation-table tr:hover {
+    background-color: #e0e0e0;
+  }
+/* Last row of the table */
+#reservation-table tr:last-child {
+    border-bottom: 2px solid #e66114;
+}
+
+  .restaurant-info {
+    display: inline-block;
+    margin: 20px;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 12px;
+    text-align: center;
 }
   
   /* Table Row */

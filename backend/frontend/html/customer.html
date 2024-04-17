@@ -23,28 +23,20 @@
             <h2>Upcoming Reservations</h2>
             <p id="no-reservations">No Reservations</p>
         </div>
-        <div class="reservation-list">
+        <div id="reservation-list">
             <!-- table element-->
             <table id="reservation-table">
-                <tr>
-                    <th>Restaurant</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Party Size</th>
-                    <th>Cancel</th>
-                </tr>
-                <div class="reservation">
-                <tr><td>${reservation.restaurant}</td>
-                    <td>${date}</td>
-                    <td>${time}</td>
-                    <td>${reservation.num_guests}</td>
-                    <td><button class="cancel-button" id="cancel-button">Cancel</button></td>
-                </tr>
-                </div>
+                    <tr>
+                        <th>Restaurant</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Party Size</th>
+                        <th>Cancel</th>
+                    </tr>
             </table>
         </div>
 
-        <div class="restaurant-list">
+        <div class="restaurant-list" id="restaurant-list">
                 <h2 id="inYourArea">Restaurants in Your Area</h2>
                 <p id="no-resteraunts">Book-A-Bite in One of These Tasty Food Spots!</p>
                 <div class="restaurant-info">
@@ -53,7 +45,6 @@
                     <p class="restaurant-phone">${restaurant.phone}</p>
                     <p class="restaurant-email">${restaurant.email}</p>
                     <button class="book-button" id="book-button">Book</button>
-
                 </div>
                 <div class="restaurant-info">
                     <h3 class="restaurant-name">${testing}</h3>

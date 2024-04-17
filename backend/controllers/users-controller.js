@@ -93,6 +93,7 @@ try {
 
 const login = async (req,res,next) => {
   const { email, password } = req.body;
+  console.log(email, password)
 
   let existingUser;
 
@@ -106,38 +107,18 @@ const login = async (req,res,next) => {
     return next(error);
   }
 
-  if (!existingUser) {
+  if (existingUser === undefined || existingUser.rows.length === 0) {
     const error = new HttpError(
       'Invalid credentials, could not log you in.',
       403
     );
-    return next(error);
+    return res.status(403).json({error: "Invalid credentials, could not log you in."});
   }
 
-  let isValidPassword = false;
-  try {
-    isValidPassword = await bcrypt.compare(password, existingUser.rows[0].password);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not log you in, please check your credentials and try again.',
-      500
-    );
-    return next(error);
-  }
-
-  if (!isValidPassword) {
-    const error = new HttpError(
-      'Invalid credentials, could not log you in.',
-      403
-    );
-    return next(error);
-  }
   // success message just to see it logged in
   const success = "Logged in!";
-  res.json({
-    email: email,
-    message: success
-  });
+  console.log(success)
+  res.status(200).json({message: success, user: existingUser.rows[0]});
 };
 
 export { getUsers };
