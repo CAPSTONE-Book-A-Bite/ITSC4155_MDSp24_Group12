@@ -7,21 +7,17 @@
     font-family: 'Figtree', sans-serif;
 }
 /* Header styles -Start****************************************/
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree', sans-serif;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-header.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+
 
 .navbar .logo {
     font-size: 2.1rem;
@@ -55,9 +51,7 @@ header.navbar {
 /* Banner styles -Start**************************************/
 .banner-section {
     height: 100vh;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('/images/background.png');
-    background-position: center;
-    background-size: cover;
+
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -181,9 +175,7 @@ header.navbar {
 
 /* Responsive Web Design */
 @media (max-width: 768px) {
-    header.navbar {
-        padding: 10px;
-    }
+
     .navbar .logo {
         font-size: 1.7rem;
     }
@@ -206,19 +198,6 @@ header.navbar {
         color: white;
     }
 
-    header.show-menu::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backdrop-filter: blur(5px);
-    }
-
-    header.show-menu .navbar .menu-links {
-        left: 0;
-    }
 
     /* Responsive Banner Section */
     .banner-section .content {

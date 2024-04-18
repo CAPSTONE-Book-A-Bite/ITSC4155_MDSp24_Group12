@@ -15,9 +15,9 @@
 <body>
   <header-component></header-component>
   <div class ="imagea">
-    <img src="../images/loginPage.png" alt="Person Eating"></div>
-  <div class="login-container">
-
+    <img src="../images/loginPage.png" alt="Person Eating">
+  </div>
+  <div class="login-container" id="login-container">
     <h2>User Login</h2>
     <form id="login-form">
         <div class="form-group">
@@ -30,10 +30,13 @@
         </div>
         <button type="submit">Login</button>
     </form>
-
-</div>
+    <div class="form-group">
+        <form id="register-form">
+        <h2 class="register-label">Don't have an account? Register here:</h2>
+        <button type="submit" class="signup-btn">Register</button>
+        </form>
+  </div>
 </body>
 <script src="../components/header.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="module" src="../components/login.js"></script>
 </html>

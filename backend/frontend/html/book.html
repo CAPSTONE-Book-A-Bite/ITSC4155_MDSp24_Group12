@@ -1,0 +1,59 @@
+<html lang="en">
+    <!-- Create Customer page that is after you login, stores the reservations the customer has and also displays the resteraunts which a customer can select to book from-->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Description to match platform usage-->
+        <meta name="description"
+          content="Book-A-Bite is a web application that allows users to reserve tables at restaurants.">
+        <!--Title to match platform name -->
+        <title>Book-A-Bite</title>
+        <!--Link to css file -->
+        <link rel="stylesheet" href="../css/book.css">
+      </head>
+<body>
+  <header-component></header-component>
+  <div class="container">
+    <div class="booking-form">
+        <h1>Online Booking</h1>
+        <h2 class="start-booking" id="start-booking">Start Booking Your Table, Username!</h2>
+        <form id="booked">
+            <div class="form-group">
+                <label for="bookingDate">Select Booking Date and Time</label>
+                <input type="date" id="bookingDate" name="bookingDate" required>
+                <input type="time" id="bookingTime" name="bookingTime" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">How many guests will be dining?*</label>
+                <select id="guests" name="guests" required>
+                    <option value="">Number of Guests...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+            </div>
+            <p class="note"><b>* </b>Restaurant Host and/or Employees have the right to CANCEL any reservation they see fit for any appropriate reason</p>
+            <button type="submit" class="book-button">Book it!</button>
+        </form>
+    </div>
+    <div class="info-container">
+      <div class="restaurant-info">
+          <h3 class="resteraunt-name" id="resteraunt-name">Restaurant A</h3>
+          <p>Open Hours: M - F: 2:00 PM - 8:00 P</p>
+      </div>
+      <div class="booker-info">
+          <h3 class="your-info">Your Information</h3>
+          <p id="your-name">Name: LastName, FirstName</p>
+          <p id="your-email">Email: username@example.com</p>
+          <p id="your-phone">Phone: (1000-000-0000)</p>
+          <button>Edit info</button>
+      </div>
+  </div>
+</div>
+</body>
+<script src="../components/header.js"></script>
+<script src="../components/book.js"></script>
+</html>

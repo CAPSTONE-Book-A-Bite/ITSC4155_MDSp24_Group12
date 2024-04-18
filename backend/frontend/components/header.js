@@ -69,7 +69,7 @@ header.navbar {
                 <li><a href="/about">About</a></li>
                 <li><a href="/hostLogin">Host Sign In</a></li>
                 <li><a href="/login">Login</a></li>
-                <li><a class="reserve" href="">Reserve</a></li>
+                <li><a class="reserve" href="/signout">Signout</a></li>
             </ul>
             </div>
         </header>

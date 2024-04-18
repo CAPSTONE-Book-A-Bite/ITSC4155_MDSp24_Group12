@@ -92,6 +92,7 @@ try {
 };
 
 const login = async (req,res,next) => {
+  console.log("login", req.body)
   const { email, password } = req.body;
   console.log(email, password)
 

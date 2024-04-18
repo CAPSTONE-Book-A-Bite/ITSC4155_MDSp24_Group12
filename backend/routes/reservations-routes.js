@@ -12,20 +12,7 @@ reservationRouter.get('/:rid', getReservationById);
 reservationRouter.get('/user/:uid', getReservationsByUserId);
 
 reservationRouter.post(
-  '/',
-  [
-    check('table_number')
-        .not()
-        .isEmpty(),
-    check('num_guests')
-        .not()
-    .isEmpty(),
-    check('datetime')
-        .not()
-        .isEmpty()
-  ],
-  createReservation
-);
+  '/',createReservation);
 
 reservationRouter.patch(
   '/:rid',

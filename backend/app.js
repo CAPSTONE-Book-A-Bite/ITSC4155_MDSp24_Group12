@@ -11,10 +11,49 @@ import { dirname } from 'path';
 dotenv.config();
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+app.use(express.static(__dirname + '/frontend'));
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+//route frontend hrefs to correct files
+app.get('/index', (req, res) => {
+  res.sendFile(__dirname + '/frontend/index.html');
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/login.html');
+});
+
+app.get('/hostLogin', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/hostLogin.html');
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/about.html');
+});
+
+app.get('/customer', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/customer.html');
+} );
+
+app.get('/book', (req, res) => {
+  const params = req.query;
+  // go to file with query params
+  // params will only have restaurant name
+  res.sendFile(__dirname + '/frontend/html/book.html');
+
+}
+);
+
+app.get('/signout', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/signout.html');
+});
+
 app.use(bodyParser.json());
+// Enable CORS
+app.use(cors({
+  origin: '*',
+}));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   //check if user is logged in and redirect to login page if not
-  const userId = localStorage.getItem("userId");
+  const userId = document.cookie.split(';').find(cookie => cookie.includes('userId'));
   if (!userId) {
-    window.location.href = "/login";
-  }  
-  
-  
-  
+    window.location.href = '/login';
+  }
   fetch('http://localhost:3001/api/reservations')
       .then(response => {
         if (!response.ok) {
@@ -47,20 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${time}</td>
             <td>${reservation.num_guests}</td>
             <td><button class="cancel-button" id="cancel-button">Cancel</button></td>
+            <p hidden id="reservation-id" class="reservation-id">${reservation.id}</p>
             `;
             reservationCount++;
           });
-          // if reservation is in the next 24 hours change no-reservation id to let you know about reservation
-
+          // update no reservations message with most recent reservation
+          const noReservations = document.getElementById('no-reservations');
+          if (reservations.length > 0) {
             const now = new Date();
-            const nextDay = new Date(now);
-            nextDay.setDate(now.getDate() + 1);
-            const nextDayString = nextDay.toISOString().split('T')[0];
-            const nextDayReservations = reservations.filter(reservation => reservation.datetime.split('T')[0] === nextDayString);
-            if (nextDayReservations.length > 0) {
-              const noReservation = document.getElementById('no-reservation');
-              noReservation.innerHTML = 'You have a reservation in the next 24 hours!';
+            const lastReservation = reservations[reservations.length - 1];
+            const reservationDate = new Date(lastReservation.datetime);
+            if (reservationDate > now) {
+              noReservations.innerHTML = `Your next reservation is on ${reservationDate.toDateString()} at ${reservationDate.toLocaleTimeString()}`;
+            } else {
+              noReservations.innerHTML = 'No reservations found';
             }
+          }
+          
         } else {
           throw new Error('Invalid response format');
         }
@@ -121,6 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="restaurant-email">${restaurant.email}</p>
                         <button class="book-button" id="book-button">Book</button>
                 `;
+                // add event listener to book button
+                restaurantDiv.querySelector('.book-button').addEventListener('click', () => {
+                    const restaurantName = restaurant.name;
+                    // redirect to book page with restaurant name
+                    window.location.href = `/book?restaurant=${restaurantName}`;
+                });
                 restaurantContainer.appendChild(restaurantDiv);
             });
         }
@@ -133,20 +139,31 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Error fetching restaurants:', error);
           // Handle error
         });
-    }
-    );
 
-    let booking =  document.querySelectorAll(".restaurant-info")
-
-
-    // create event listeners for all
-    booking.forEach((book) => {
-        book.addEventListener('click', async (event) => {
-            const restaurantName = book.querySelector('.restaurant-name').innerText;
-            console.log(restaurantName);
-
-            // redirect to reservation page with params
-            window.location.href = `../html/reservation.html?restaurant=${restaurantName}`;
-        });
+    // add event listener for the cancel button
+    document.getElementById('reservation-table').addEventListener('click', async (event) => {
+      if (event.target.className === 'cancel-button') {
+        const reservationId = event.target.parentElement.parentElement.querySelector('.reservation-id').innerHTML;
+        console.log(reservationId);
+        try {
+          const response = await fetch(`http://localhost:3001/api/reservations/${reservationId}`, {
+            method: 'DELETE',
+          });
+          if (!response.ok) {
+            throw new Error('Failed to cancel reservation');
+          }
+          // remove the row from the table
+          event.target.parentElement.parentElement.remove();
+          // update no reservations message
+          const noReservations = document.getElementById('no-reservations');
+          if (document.getElementById('reservation-table').rows.length == 1) {
+            noReservations.innerHTML = 'No reservations found';
+          }
+        } catch (error) {
+          console.error('Error canceling reservation:', error);
+          // Handle error
+        }
+      }
+    });
     }
     );
