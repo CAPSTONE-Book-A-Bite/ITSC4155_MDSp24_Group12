@@ -93,6 +93,8 @@ try {
 };
 
 const login = async (req,res,next) => {
+
+  console.log(req.body)
   const { email, password } = req.body;
 
   let existingAdmin;
@@ -104,15 +106,15 @@ const login = async (req,res,next) => {
       'Logging in failed, please try again later.',
       500
     );
-    return next(error);
+    return res.status(500).json({ message: 'Logging in failed, please try again later.' });
   }
 
-  if (!existingAdmin) {
+  if (existingAdmin.rows.length === 0) {
     const error = new HttpError(
       'Invalid admin user, could not log you in.',
       403
     );
-    return next(error);
+    return res.status(403).json({ message: 'Invalid admin user, could not log you in.' });
   }
 
   let isValidPassword = false;
@@ -125,7 +127,7 @@ const login = async (req,res,next) => {
       'Could not log you in, please check your credentials and try again.',
       500
     );
-    return next(error);
+    return res.status(500).json({ message: 'Could not log you in, please check your credentials and try again.' });
   }
 
   if (!isValidPassword) {
@@ -133,14 +135,11 @@ const login = async (req,res,next) => {
       'Invalid credentials, could not log you in.',
       403
     );
-    return next(error);
+    return res.status(403).json({ message: 'Invalid credentials, could not log you in.' });
   }
   // succes message just to see it logged in
-  const success = "Logged in!";
-  res.json({
-    email: email,
-    message: success
-  });
+  return res.status(200).json({ hostId: existingAdmin.rows[0].id, hostName: existingAdmin.rows[0].name});
+
 };
 
 export { getAdmins };

@@ -30,11 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
           // filter reservations to only show the ones that are made by the user
           reservations = reservations.filter(reservation => reservation.user_id == localStorage.getItem("userId"));
+          // sort reservations by date
+          reservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+          // filter reservations to only show the ones that are in the future
+          reservations = reservations.filter(reservation => new Date(reservation.datetime) > new Date());
           console.log(reservations);
           let reservationCount = 1;
           reservations.forEach(reservation => {
-            const date = reservation.datetime.split('T')[0];
-            const time = reservation.datetime.split('T')[1].split('.')[0];
+            const date = new Date(reservation.datetime).toDateString();
+            const time = new Date(reservation.datetime).toLocaleTimeString();
+
 
             // create a new row for each reservation
             const row = reservationList.insertRow(reservationCount);
@@ -52,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const noReservations = document.getElementById('no-reservations');
           if (reservations.length > 0) {
             const now = new Date();
-            const lastReservation = reservations[reservations.length - 1];
-            const reservationDate = new Date(lastReservation.datetime);
+            // fetch closest reservation to now 
+            const reservationDate = new Date(reservations[0].datetime);
             if (reservationDate > now) {
               noReservations.innerHTML = `Your next reservation is on ${reservationDate.toDateString()} at ${reservationDate.toLocaleTimeString()}`;
             } else {

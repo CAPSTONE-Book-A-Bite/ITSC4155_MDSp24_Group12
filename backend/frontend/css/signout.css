@@ -10,3 +10,49 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.signout {
+    text-align: center;
+}
+
+.logout-text{
+    font-size: 48px;
+    color: white;
+    font-family: 'Times New Roman', serif;
+    margin-bottom: 50px;
+}
+
+.thank-you{
+/* thin white text */
+    color: white;
+    font-size: 40px;
+    font-weight: 100;
+    margin-bottom: 25px;
+    width: 100%;
+    font-family: Garamond, serif;
+}
+
+.sign-in{
+    /* black button white text should be bold and same size as the thank you text */
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    font-family: Garamond, serif;
+    width: 75%;
+}
+
+.sign-in:hover{
+    background-color: darkgrey;
+    text-decoration: solid;
+}
+
+.home-page{
+    /* white text with underline */
+    color: white;
+    text-decoration: underline;
+    font-size: 25px;
+    font-family: Times New Roman, serif;
+    /* italic */
+    font-style: italic;
+
+}

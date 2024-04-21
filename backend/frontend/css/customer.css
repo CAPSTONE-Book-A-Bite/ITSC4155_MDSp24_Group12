@@ -18,7 +18,15 @@ body{
     left: 50%;
     transform: translateX(-50%);
 }
+.customer-container{
+  /* overall container needed to place two side by side columns */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 50px;
 
+}
 .upcoming-reservations{
     background-color: #fff;
     padding: 20px;
@@ -95,17 +103,6 @@ body{
     border-bottom: 2px solid #e66114;
 }
 
-  .restaurant-info {
-    display: inline-block;
-    margin: 20px;
-    padding: 16px;
-    border-radius: 16px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background: #FFFFFF;
-    border: 1px solid #DEE2E6;
-    border-radius: 12px;
-    text-align: center;
-}
   
   /* Table Row */
   #reservation-table tr:nth-child(even) {
@@ -140,7 +137,6 @@ body{
     position: absolute;
     top: 20%;
     left: 50%;
-    margin-right: 150px;
     width: auto;
 }
 

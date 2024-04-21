@@ -66,7 +66,7 @@ h2, h3 {
     text-align: center;
 }
 
-.form-group input[type="date"],
+.form-group input[type="datetime-local"],
 .form-group input[type="time"],
 .form-group select {
     width: 70%;
@@ -119,24 +119,28 @@ button.book-button {
 .info-container {
     display: flex;
     flex-direction: column; /* Stack children vertically */
-    align-items: flex-start; /* Align children to the start of the flex container */
+    align-items: center; /* Align children to the start of the flex container */
     width: 40%; /* Set the width to fit the container */
     /* move to the right */
     padding: 20px;
     border-radius: 5px;
-    margin-top: 5%;
 
 }
 
+.restaurant-info {
+    width: 40%; 
+    box-shadow: none;
+    padding: 20px;
+    margin-top: 25%;
+    /* move to the right */
+}
 
-.restaurant-info,
 .booker-info {
     width: 40%; 
     box-shadow: none;
     padding: 20px;
+    margin-top: 15%;
     /* move to the right */
-    margin-left: 35%;
-    margin-top: 10%;
 }
 
 h3.resteraunt-name {

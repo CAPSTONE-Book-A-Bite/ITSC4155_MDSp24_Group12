@@ -9,12 +9,48 @@
         <!--Title to match platform name -->
         <title>Book-A-Bite</title>
         <!--Link to css file -->
-        <link rel="stylesheet" href="../css/host.css">
+        <link rel="stylesheet" href="../css/hostHome.css">
       </head>
       <header-component></header-component>
 
 
 <body>
+  <div class="container">
+    <h1 class="restaurant-text">Restaurant Booking List</h2>
+    <div class="total-reservations">
+      <h2 class="reservation-text">Total Reservations</h2>
+      <h3 class="reservation-number">There are <u class="underlined-reservations">9</u> reservations for this upcoming week</h3>
+    </div>
+    <div class="reservations-list">
+      <table class="reservations-table" id="reservations-table">
+        <!--table headers-->
+        <tr>
+          <th>#</th>
+          <th>Customer Name</th>
+          <th>Customer Email</th>
+          <th>Date</th>
+          <th width="15%">Time</th>
+          <th>Party Size</th>
+          <th class="cancel-header">Cancel Reservation</th>
+        </tr>
+        <!--table data-->
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+          <td>amian@gmail.com</td>
+          <td>2021-04-20</td>
+          <td>12:00</td>
+          <td>4</td>
+          <td><button class="cancel-button">Cancel</button></td>
+        </tr>
+
+
+      </table>
+    </div> 
+
+
+
+  </div>
 </body>
 <script src="../components/header.js"></script>
 <script src="../components/host.js"></script>

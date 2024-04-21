@@ -1,9 +1,121 @@
-body{
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     background: url("../images/background.png") no-repeat center center/cover;
     background-size: cover;
 }
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    height: auto;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center
+}
+
+.form-group input {
+    width: 95%;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 40px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media (min-width: 768px) {
+    .login-container {
+        width: 400px;
+    }
+}
+
+.imagea{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-top: 25px;
+
+}
+
+.imagea img {
+    width: 50%;
+    height: 50%;
+    margin-bottom: 50px;
+    border: 2px solid #ccc;
+}
+
+.alert-danger {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-label {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ec8139;
+}
+
+button.signup-btn {
+    background-color: #ff7f50; /* Your desired background color */
+    color: #fff; /* Your desired text color */
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(94, 84, 72, 0.1);
+    margin-left: 10%;
+}
+
+button.signup-btn:hover {
+    background-color: #ff6347; /* Your desired hover background color */
+}
+
+
+
+

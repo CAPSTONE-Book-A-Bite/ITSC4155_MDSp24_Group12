@@ -10,19 +10,19 @@
         <!--Title to match platform name -->
         <title>Book-A-Bite</title>
         <!--Link to css file -->
-        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/host.css">
       </head>
 <body>
   <header-component></header-component>
   <div class ="imagea">
-    <img src="../images/loginPage.png" alt="Person Eating"></div>
-  <div class="login-container">
-
+    <img src="../images/loginPage.png" alt="Person Eating">
+  </div>
+  <div class="login-container" id="login-container">
     <h2>Host Login</h2>
-    <form id="login-form" action="#" method="POST">
+    <form id="login-form">
         <div class="form-group">
-            <label for="username">Email:</label>
-            <input type="text" id="email" name="username" required>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
@@ -30,8 +30,13 @@
         </div>
         <button type="submit">Login</button>
     </form>
-</div>
+    <div class="form-group">
+        <form id="register-form">
+        <h2 class="register-label">Don't have an account? Register here:</h2>
+        <button type="submit" class="signup-btn">Register</button>
+        </form>
+  </div>
 </body>
 <script src="../components/header.js"></script>
-<script src="../components/hostLogin.js"></script>
+<script type="module" src="../components/hostLogin.js"></script>
 </html>

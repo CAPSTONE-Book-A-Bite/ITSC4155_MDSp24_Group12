@@ -1,0 +1,129 @@
+.container {
+  margin-top: 135px;
+  /* container that will align everything vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+body{
+    background: url("../images/background.png") no-repeat center center/cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.restaurant-text{
+    font-size: 48px;
+    font-weight: 100;
+    color: white;
+    margin-bottom: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.total-reservations{
+    /* white box with curved edges and black thing black border spanning 80% of the screen */
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid black;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+
+}
+
+.reservation-text{
+    /* black text bold and large aligned in center */
+    font-size: 48px;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+.reservation-number{
+    /* black text bold and large aligned in center */
+    font-size: 32px;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: -10px;
+    font-family:'Trebuchet MS';
+}
+
+.reservations-list{
+    /* div containing the table with reservations */
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid black;
+    width: 80%;
+    padding: 10px;
+}
+
+.reservations-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.reservations-table th {
+    font-weight: bold;
+    border-bottom: 1px solid lightgray;
+    padding: 8px;
+}
+
+.reservations-table td {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray; /* Add this line to create a thin light grey border between table columns */
+    padding: 8px;
+    text-align: center;
+}
+
+.reservations-table td:last-child {
+    border-right: none;
+}
+
+
+.reservations-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.reservations-table th {
+    background-color: #f2f2f2;
+}
+
+.reservations-table th, .reservations-table td {
+    border-right: 1px solid lightgray;
+}
+
+.reservations-table th:last-child, .reservations-table td:last-child {
+    border-right: none;
+}
+
+.reservations-table th:first-child {
+    border-top-left-radius: 20px;
+}
+
+.reservations-table th:last-child {
+    border-top-right-radius: 20px;
+}
+
+.reservations-table td:first-child {
+    border-bottom-left-radius: 20px;
+}
+
+
+.reservations-table th, .reservations-table td {
+    border-right: 1px solid lightgray;
+}
+
+.cancel-button{
+    /* red button with white text */
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family:'Trebuchet MS';
+}
+
+

@@ -37,17 +37,20 @@ app.get('/customer', (req, res) => {
 } );
 
 app.get('/book', (req, res) => {
-  const params = req.query;
-  // go to file with query params
-  // params will only have restaurant name
   res.sendFile(__dirname + '/frontend/html/book.html');
-
 }
 );
+
+
 
 app.get('/signout', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/signout.html');
 });
+
+app.get('/hostHome', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/host.html');
+}
+);
 
 app.use(bodyParser.json());
 // Enable CORS
