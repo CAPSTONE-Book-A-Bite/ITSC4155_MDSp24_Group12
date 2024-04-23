@@ -55,6 +55,10 @@ app.get('/signup', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/signup.html');
 });
 
+app.get('/hostRegister', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/hostRegister.html');
+});
+
 app.use(bodyParser.json());
 // Enable CORS
 app.use(cors({

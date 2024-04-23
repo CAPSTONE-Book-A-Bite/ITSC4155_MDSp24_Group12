@@ -14,6 +14,7 @@
       </head>
 <body>
   <header-component></header-component>
+  <div class="container">
   <div class ="imagea">
     <img src="../images/loginPage.png" alt="Person Eating">
   </div>
@@ -21,20 +22,20 @@
     <h2>User Login</h2>
     <form id="login-form">
         <div class="form-group">
-            <label for="email">Email:</label>
             <input type="text" id="email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Login</button>
+        <button class="login-button" type="submit">Login</button>
     </form>
     <div class="form-group">
         <form id="register-form">
-        <h2 class="register-label">Don't have an account? Register here:</h2>
+        <h3 class="register-label">Don't have an account? Register here:</h3>
         <button type="submit" class="signup-btn">Register</button>
         </form>
+    </div>
+  </div>
   </div>
 </body>
 <script src="../components/header.js"></script>
