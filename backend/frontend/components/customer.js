@@ -118,10 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const restaurantDiv = document.createElement('div');
                 restaurantDiv.classList.add('restaurant-info');
                 restaurantDiv.innerHTML = `
+                        <img class="restaurant-image" src="/api/images/${restaurant.name}" alt="restaurant image">
                         <h3 class="restaurant-name">${restaurant.name}</h3>
-                        <p class="restaurant-address">${restaurant.address}</p>
-                        <p class="restaurant-phone">${restaurant.phone}</p>
-                        <p class="restaurant-email">${restaurant.email}</p>
                         <button class="book-button" id="book-button">Book</button>
                 `;
                 // add event listener to book button

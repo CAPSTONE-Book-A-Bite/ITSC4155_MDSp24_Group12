@@ -8,6 +8,7 @@ class Header extends HTMLElement {
 <style>
         /* Header styles -Start****************************************/
 header {
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
