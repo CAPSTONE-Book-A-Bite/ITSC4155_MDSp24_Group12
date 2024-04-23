@@ -4,27 +4,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!userId) {
         window.location.href = '/login';
     }
+
     let bookingDate = document.getElementById('bookingDate');
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();
-    let minDate = yyyy + '-' + mm + '-' + dd + 'T07:00';
+    let minDate = yyyy + '-' + mm + '-' + dd;
 
     // Set the min attribute to today's date at 07:00 AM
     bookingDate.setAttribute('min', minDate);
 
-    // Event listener to check the time
-    bookingDate.addEventListener('change', function () {
-        let selectedDate = new Date(this.value);
-        let selectedHour = selectedDate.getHours();
-
-        if (selectedHour < 7 || selectedHour > 20) {
-            alert('Please select a time between 07:00 AM and 08:00 PM.');
-            this.value = ''; // Resets the input value
+    // Event listener to check the time is in the future
+    let bookingTime = document.getElementById('bookingTime');
+    bookingTime.addEventListener('change', () => {
+        let time = bookingTime.value;
+        let hour = parseInt(time.split(':')[0]);
+        let minute = parseInt(time.split(':')[1]);
+        let date = bookingDate.value;
+        let year = parseInt(date.split('-')[0]);
+        let month = parseInt(date.split('-')[1]);
+        let day = parseInt(date.split('-')[2]);
+        let bookingDateTime = new Date(year, month - 1, day, hour, minute);
+        let currentDateTime = new Date();
+        if (bookingDateTime < currentDateTime) {
+            bookingTime.setCustomValidity('Please select a future time');
+        } else {
+            bookingTime.setCustomValidity('');
         }
     });
-
     // update the start-booking h2 text with user's name
     const userName = document.cookie.split(';').find(cookie => cookie.includes('userName')).split('=')[1];
     document.getElementById('start-booking').innerHTML = 'Start Booking Your Table,' + userName + '!';
@@ -81,14 +89,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingForm = document.getElementById('booked');
     bookingForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent form submission
-        
+        // validate booking date and time are in the future and betwwen 7am and 10pm
+        const bookingTime = document.getElementById('bookingTime').value;
+        const hour = parseInt(bookingTime.split(':')[0]);
+        if (hour < 7 || hour >= 22) {
+            alert('Please select a time between 7am and 10pm');
+            // clear the form
+            bookingForm.reset();
+            return;
+        }
         const date = document.getElementById('bookingDate').value;
         console.log(date);
+        const dateTime = date + 'T' + bookingTime + ':00.000Z';
         const partySize = document.getElementById('guests').value;
         const restaurantName = document.getElementById('resteraunt-name').innerHTML;
         
         // dateTime is a string in the format "YYYY-MM-DDTHH:MM:SS:SSSZ"
-        const dateTime = date + ':00.000Z';
+ 
         console.log(dateTime);
         // submit form with needed data
         // const { user_id, restaurant_id, num_guests, datetime } = req.body;
@@ -133,5 +150,3 @@ document.addEventListener('DOMContentLoaded', () => {
     
 }
 );
-
-

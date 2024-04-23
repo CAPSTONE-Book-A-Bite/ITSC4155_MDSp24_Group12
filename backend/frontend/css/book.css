@@ -66,7 +66,7 @@ h2, h3 {
     text-align: center;
 }
 
-.form-group input[type="datetime-local"],
+.form-group input[type="date"],
 .form-group input[type="time"],
 .form-group select {
     width: 70%;
@@ -156,6 +156,14 @@ h3.your-info {
 }
 
 h2.start-booking {
+    text-align: center;
+}
+
+.warning-need{
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    margin-left: 10px;
     text-align: center;
 }
 

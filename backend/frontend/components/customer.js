@@ -25,11 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let reservations = data.reservations; // Access the reservations array
         console.log(JSON.stringify(reservations) + "before filter")
         if (Array.isArray(reservations)) {
-          //log the userId in local Storage
-          console.log(localStorage.getItem("userId"));
-        
+          const userId = document.cookie.split(';').find(cookie => cookie.includes('userId')).split('=')[1];
           // filter reservations to only show the ones that are made by the user
-          reservations = reservations.filter(reservation => reservation.user_id == localStorage.getItem("userId"));
+          reservations = reservations.filter(reservation => reservation.user_id == userId);
           // sort reservations by date
           reservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
           // filter reservations to only show the ones that are in the future
@@ -90,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // populate customer name with the user in the array that shares sameId in local storage
         const users = data.users;
         console.log(`users: ${JSON.stringify(users)}`);
-        const userId = localStorage.getItem("userId");
+        const userId = document.cookie.split(';').find(cookie => cookie.includes('userId')).split('=')[1];
         console.log(`userId: ${userId}`);
         const user = users.find(user => user.id == userId);
         console.log(`user: ${JSON.stringify(user)}`)

@@ -20,7 +20,9 @@
         <form id="booked">
             <div class="form-group">
                 <label for="bookingDate">Select Booking Date and Time</label>
-                <input type="datetime-local" id="bookingDate" name="bookingDate" required>
+                <input type="date" id="bookingDate" name="bookingDate" required>
+                <input type="time" id="bookingTime" name="bookingTime" required>
+                <div id="warning-need" class="warning-need"></div>
             </div>
             <div class="form-group">
                 <label for="guests">How many guests will be dining?*</label>
@@ -41,7 +43,7 @@
     <div class="info-container">
       <div class="restaurant-info">
           <h3 class="resteraunt-name" id="resteraunt-name">Restaurant A</h3>
-          <p>Open Hours: M - F: 2:00 PM - 8:00 P</p>
+          <p>Open Hours: M - F: 7:00 AM - 10:00 P</p>
       </div>
       <div class="booker-info">
           <h3 class="your-info">Your Information</h3>

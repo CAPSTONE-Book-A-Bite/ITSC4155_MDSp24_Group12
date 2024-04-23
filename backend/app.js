@@ -49,8 +49,11 @@ app.get('/signout', (req, res) => {
 
 app.get('/hostHome', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/host.html');
-}
-);
+});
+
+app.get('/signup', (req, res) => { 
+  res.sendFile(__dirname + '/frontend/html/signup.html');
+});
 
 app.use(bodyParser.json());
 // Enable CORS

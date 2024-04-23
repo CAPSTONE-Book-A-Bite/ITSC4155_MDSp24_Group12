@@ -14,6 +14,7 @@
       </head>
 <body>
   <header-component></header-component>
+<div class="container">
   <div class ="imagea">
     <img src="../images/loginPage.png" alt="Person Eating">
   </div>
@@ -21,21 +22,22 @@
     <h2>Host Login</h2>
     <form id="login-form">
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" required>
+            <input type="text" id="email" name="email" placeholder="Email" required>
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
         </div>
-        <button type="submit">Login</button>
+        <button class="login-button" type="submit">Login</button>
+
     </form>
     <div class="form-group">
         <form id="register-form">
-        <h2 class="register-label">Don't have an account? Register here:</h2>
-        <button type="submit" class="signup-btn">Register</button>
+        <h3 class="register-label">Don't have an account? Register here:</h2>
+        <button type="submit" class="signup-btn" id="Register">Register</button>
         </form>
+    </div>
   </div>
+</div>
 </body>
 <script src="../components/header.js"></script>
 <script type="module" src="../components/hostLogin.js"></script>

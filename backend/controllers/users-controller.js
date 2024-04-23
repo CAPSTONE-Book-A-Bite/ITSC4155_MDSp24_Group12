@@ -25,6 +25,7 @@ const getUsers = async (req, res) => {
 // working here in signup
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
+  console.log(errors)
   if (!errors.isEmpty()) {
     return next(
       new HttpError('Invalid inputs passed, please check your data.', 422)
@@ -47,7 +48,7 @@ const signup = async (req, res, next) => {
       'User exists already, please login instead.',
       422
     );
-    return next(error);
+    return res.status(422).json({error: "User exists already, please login instead."});
   }
 
   let hashedPassword;
@@ -58,7 +59,7 @@ const signup = async (req, res, next) => {
       'Could not create user, please try again.',
       500
     );
-    return next(error);
+    return res.status(500).json({error: "Could not create user, please try again."});
   }
 
   // change to sql
@@ -87,8 +88,8 @@ try {
   }
 
   res
-    .status(201)
-    .json({ name: createdUser.name, email: createdUser.email, phone: createdUser.phone});
+    .status(200)
+    .json({message: "User created!", user: result.rows[0]});
 };
 
 const login = async (req,res,next) => {

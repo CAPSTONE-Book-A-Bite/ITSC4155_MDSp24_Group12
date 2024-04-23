@@ -1,18 +1,19 @@
+document.getElementById("signupForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-document.getElementById("login-form").addEventListener("submit", async (event) => {
-    event.preventDefault(); // Prevent form submission
-
+    const name = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const loginData = { email, password };
-    console.log(loginData);
+    const phone = document.getElementById("phone").value;
+    const signupData = { name, email, password, phone};
+    console.log(signupData);
     try {
-        const response = await fetch("/api/users/login", {
+        const response = await fetch("http://localhost:3001/api/users/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(loginData),
+            body: JSON.stringify(signupData),
         });
         const data = await response.json();
         if (response.status != 200) {
@@ -29,30 +30,17 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
         const alert = document.createElement("div");
         alert.className = "alert-danger";
         alert.innerHTML = error.message;
-        document.getElementById("login-container").appendChild(alert);
+        document.getElementById("signup-container").appendChild(alert);
         // remove alert after 5 seconds
         setTimeout(() => {
             alert.remove();
         }, 5000);
 
         // clear input fields
+        document.getElementById("username").value = "";
         document.getElementById("email").value = "";
         document.getElementById("password").value = "";
+        document.getElementById("phone").value = "";
     }
-});
-
-document.getElementById("register-form").addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    window.location.href = "/signup";
-});
-
-// check if user is already logged in and redirect to home page
-if (document.cookie.includes("userId")) {
-    window.location.href = "/customer";
 }
-// if user is host redirect to host page
-if (document.cookie.includes("hostId")) {
-    window.location.href = "/hostHome";
-}
-
+);

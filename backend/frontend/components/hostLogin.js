@@ -45,10 +45,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const userId = getCookie("userId");
     if (userId){
-        window.location.href = "/userHome";
+        window.location.href = "/customer";
     }
     }
 );
+
+document.getElementById('register-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    window.location.href = "/hostRegister";
+});
 
 function getCookie(name) {
     const cookie = document.cookie.split(";").find((cookie) => cookie.includes(name));
