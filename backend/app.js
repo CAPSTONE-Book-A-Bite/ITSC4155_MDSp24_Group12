@@ -9,6 +9,9 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import multer from 'multer';
+import fs from 'fs/promises';
+import path from 'path';
+import sharp from 'sharp';
 
 
 dotenv.config();
@@ -21,6 +24,23 @@ app.use(cors({
   origin: '*',
 }));
 
+const resizeAndSaveImage = (req, res, next) => {
+  if (!req.file) return next(); // No file uploaded
+
+  const filePath = `frontend/uploads/${req.file.filename}`;
+  sharp(filePath)
+    .resize(400, 200)
+    .toFile(`frontend/uploads/resized-${req.file.filename}`, (err) => {
+      if (err) {
+        console.error('Sharp resizing error:', err);
+        return next(err);
+      }
+
+      console.log('Image resized and saved successfully');
+      next();
+    });
+};
+
 
 
 const storage = multer.diskStorage({
@@ -29,7 +49,8 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     console.log('file' + file.originalname);
-    const restaurantName = req.body.restaurantName;
+    let restaurantName = req.body.restaurantName.replace(/\s/g, ''); // Remove spaces from restaurant name
+    console.log('restaurantName:', restaurantName)
     cb(null, restaurantName + '.' +file.mimetype.split('/')[1]);
   }
 });
@@ -38,17 +59,35 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-app.post('/api/upload', upload.single('image'), (req, res) => {
-  console.log('requestBody' + JSON.stringify(req.body));
-  // logic to call signup function for host with information from req.body
-  
+app.post('/api/upload', upload.single('image'), resizeAndSaveImage, (req, res) => {
+  res.status(201).json({ message: 'File uploaded successfully' });
 });
 
-app.get('/api/images/:restaurantName', (req, res) => {
-  const restaurantName = req.params.restaurantName
-  res.sendFile(__dirname + `/frontend/uploads/${restaurantName}.jpeg`);
-}
-);
+app.get('/api/images/:restaurantName', async (req, res) => {
+  const { restaurantName } = req.params;
+  console.log('restaurantName:', restaurantName)
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const directoryPath = path.join(__dirname, 'frontend/uploads');
+  const extensions = ['jpeg', 'jpg', 'png', 'gif', 'webp']; // List of possible extensions
+
+  try {
+    for (let ext of extensions) {
+      const filePath = path.join(directoryPath, `resized-${restaurantName}.${ext}`);
+      try {
+        await fs.access(filePath);  // Check if file exists
+        return res.sendFile(filePath); // Send the file if it exists
+      } catch (error) {
+        // Continue checking next extension if current one fails
+      }
+    }
+    // If no file is found, send a 404 response
+    res.status(404).send('Image not found');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
 
 
 app.use(express.static(__dirname + '/frontend'));
@@ -138,6 +177,6 @@ app.listen(3001, function () {
 
 app.get('/', (req, res) => { 
   res.sendFile(__dirname + '/frontend/index.html');
-}
+});
 
-);
+

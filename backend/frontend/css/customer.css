@@ -35,15 +35,40 @@ body{
 .upcoming-reservations{
     background-color: #fff;
     padding: 20px;
-    border-radius: 50px;
+    border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 20%;
     left: 5%;
-    height: 100px;
-    width: auto;
+    width: 530px;
     margin-top: 50px;
 }
+
+.upcoming-reservations h2{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+color: #152536;
+flex: none;
+order: 0;
+flex-grow: 0;
+text-align: left;
+}
+
+.upcoming-reservations p{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 28px;
+color: #152536;
+flex: none;
+order: 1;
+flex-grow: 0;
+text-align: left;
+}
+
 
 #reservation-list{
     background-color: #fff;
@@ -135,14 +160,39 @@ body{
     background: #FFFFFF;
     border: 1px solid #DEE2E6;
     border-radius: 20px;
-    text-align: center;
-    max-width: 300px;
-    max-height: 300px;
+
     margin-top: 20px;
 }
 
+.restaurant-info h3 {
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+color: #212529;
+text-align: left;
+margin-left: 5px;
+}
+
+.availableTimes{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-decoration-line: underline;
+color: #68717A;
+/* transparent button background */
+background: rgba(0, 0, 0, 0);
+border: none;
+cursor: pointer;
+/*alighn to left of div */
+text-align: left;
+}
+
 .restaurant-image{
-  width: 300px;
+  width: 400px;
   height: 200px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -152,11 +202,9 @@ body{
 }
 .restaurant-list {
     padding: 20px;
-    border-radius: 50px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 20%;
-    left: 50%;
+    left: 45%;
     width: auto;
     margin-right: 20px;
     margin-top: 50px;
@@ -181,16 +229,47 @@ body{
     font-size: 18px;
 }
 
-
-.restaurant-list button,
-#restaurant-container button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.restaurant-text {
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 20px;
+    margin-top: -20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
+
+.restaurant-text h2 {
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 34px;
+text-align: left;
+color: #152536;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin-left: 20px;
+
+}
+
+.restaurant-text p {
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 28px;
+
+color: #152536;
+flex: none;
+order: 1;
+flex-grow: 0;
+text-align: left;
+margin-left: 20px;
+
+  }
+

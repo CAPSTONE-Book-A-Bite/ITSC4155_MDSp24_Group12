@@ -115,15 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const restaurants = data.users; // Access the restaurants array
         if (Array.isArray(restaurants)) {
             restaurants.forEach(restaurant => {
+                let restaurantName = restaurant.name;
+                restaurantName = restaurantName.replace(/\s/g, '');
                 const restaurantDiv = document.createElement('div');
                 restaurantDiv.classList.add('restaurant-info');
                 restaurantDiv.innerHTML = `
-                        <img class="restaurant-image" src="/api/images/${restaurant.name}" alt="restaurant image">
+                        <img class="restaurant-image" src="/api/images/${restaurantName}" alt="restaurant image">
                         <h3 class="restaurant-name">${restaurant.name}</h3>
-                        <button class="book-button" id="book-button">Book</button>
+                        <button class="availableTimes" id="book-button">See Available Times</button>
                 `;
                 // add event listener to book button
-                restaurantDiv.querySelector('.book-button').addEventListener('click', () => {
+                restaurantDiv.querySelector('.availableTimes').addEventListener('click', () => {
                     const restaurantName = restaurant.name;
                     // redirect to book page with restaurant name
                     window.location.href = `/book?restaurant=${restaurantName}`;

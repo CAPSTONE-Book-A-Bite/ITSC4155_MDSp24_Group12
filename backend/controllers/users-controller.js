@@ -51,22 +51,12 @@ const signup = async (req, res, next) => {
     return res.status(422).json({error: "User exists already, please login instead."});
   }
 
-  let hashedPassword;
-  try {
-    hashedPassword = await bcrypt.hash(password, 12);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not create user, please try again.',
-      500
-    );
-    return res.status(500).json({error: "Could not create user, please try again."});
-  }
 
   // change to sql
   const createdUser = {
     name,
     email,
-    password: hashedPassword,
+    password: password,
     phone
 };
 

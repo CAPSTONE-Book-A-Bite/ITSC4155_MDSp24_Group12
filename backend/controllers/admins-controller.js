@@ -50,22 +50,13 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  let hashedPassword;
-  try {
-    hashedPassword = await bcrypt.hash(password, 12);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not create admin, please try again.',
-      500
-    );
-    return next(error);
-  }
+
 
   // change to sql
   const createdAdmin = {
     name,
     email,
-    password: hashedPassword
+    password: password
 };
 
 let result;
