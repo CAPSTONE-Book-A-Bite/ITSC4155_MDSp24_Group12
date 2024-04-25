@@ -26,9 +26,8 @@ const getAdmins = async (req, res) => {
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
-    );
+    return res.status(400).json({ errors: errors.array() });
+
   }
 
   const { name, email, password } = req.body;
@@ -47,7 +46,7 @@ const signup = async (req, res, next) => {
       'Admin exists already, please login instead.',
       422
     );
-    return next(error);
+    return res.status(422).json({ message: 'Admin exists already, please login instead.'});
   }
 
 
@@ -75,12 +74,10 @@ try {
       'Signing up failed, please try again later.',
       500
     );
-    return next(error);
-  }
+    return res.status(500).json({ message: 'Signing up failed, please try again later.' });
+}
 
-  res
-    .status(201)
-    .json({ name: createdAdmin.name, email: createdAdmin.email });
+  res.status(201).json({ name: createdAdmin.name, email: createdAdmin.email });
 };
 
 const login = async (req,res,next) => {
