@@ -1,6 +1,7 @@
 import express from 'express';
 import { check } from 'express-validator';
 import { getUsers, signup, login } from '../controllers/users-controller.js'
+import bodyParser from 'body-parser';
 
 const userRouter = express.Router();
 
@@ -8,6 +9,7 @@ userRouter.get('/', getUsers);
 
 userRouter.post(
   '/signup',
+  bodyParser.json(),  // added this line
   [
     check('name')
       .not()
@@ -20,6 +22,6 @@ userRouter.post(
   signup
 );
 
-userRouter.post('/login', login);
+userRouter.post('/login',bodyParser.json(), login);
 
 export { userRouter };

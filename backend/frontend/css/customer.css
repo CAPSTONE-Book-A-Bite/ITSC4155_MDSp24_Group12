@@ -1,0 +1,311 @@
+body{
+    margin-top: 135px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background: url("../images/background.png");
+    /* stretch background vertically so it covers the whole screen  without repeating*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+#customer-name{
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.customer-container{
+  /* overall container needed to place two side by side columns */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 135px;
+
+}
+
+.upcoming-reservations{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 20%;
+    margin-left: 100px;
+    width: 515px;
+    margin-top: 50px;
+    height: 111px;
+}
+
+.upcoming-reservations h2{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+color: #152536;
+flex: none;
+order: 0;
+flex-grow: 0;
+text-align: left;
+}
+
+.upcoming-reservations p{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 28px;
+color: #152536;
+flex: none;
+order: 1;
+flex-grow: 0;
+text-align: left;
+}
+
+
+#reservation-list{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 40%;
+    margin-left: 100px;
+    height: auto;
+    width: auto;
+    margin-top: 100px;
+}
+
+#reservation-list h2{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; 
+  }
+  
+  /* Table Header */
+  #reservation-table th {
+    background-color: #f2f2f2; 
+    color: #333; 
+    font-weight: bold;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 3px solid #e66114;
+    border-left: 3px solid #e66114;
+    border-top: 3px solid #e66114;
+    border-right: 3px solid #e66114;
+
+}
+#reservation-table td {
+    padding: 8px;
+    border-bottom: 2px solid #e66114; 
+    border-left: 2px solid #e66114;
+    border-top: 2px solid #e66114;
+    border-right: 2px solid #e66114;
+}
+  
+  /* Table Row */
+  #reservation-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Table Data Cells */
+  #reservation-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd; 
+  }
+  
+  /* Hover effect on table row */
+  #reservation-table tr:hover {
+    background-color: #e0e0e0;
+  }
+/* Last row of the table */
+#reservation-table tr:last-child {
+    border-bottom: 2px solid #e66114;
+}
+
+  
+  /* Table Row */
+  #reservation-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Table Data Cells */
+  #reservation-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd; 
+  }
+  
+  /* Hover effect on table row */
+#reservation-table tr:hover {
+    background-color: #e0e0e0;
+  }
+.restaurant-info {
+/* cardImage */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: inline-block;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+margin-left: 20px;
+margin-right: 20px;
+margin-top: 20px;
+width: 364px;
+
+
+
+/* Default/White */
+background: #FFFFFF;
+border-radius: 12px 0px 0px 12px;
+
+}
+
+.restaurant-info h3 {
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+color: #212529;
+text-align: left;
+margin-left: 15px;
+}
+
+.restaurant-info p {
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+
+/* Gray/600 */
+color: #6C757D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+margin-left: 15px;
+text-align: left;
+}
+
+.availableTimes{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-decoration-line: underline;
+color: #68717A;
+/* transparent button background */
+background: rgba(0, 0, 0, 0);
+border: none;
+cursor: pointer;
+/*alighn to left of div */
+text-align: left;
+margin-left: 8px;
+}
+
+.restaurant-image{
+  width: 364px;
+  height: 214px;
+  border-top-left-radius: 12px;
+
+
+}
+.restaurant-list {
+    padding: 20px;
+    position: absolute;
+    top: 18%;
+    left: 45%;
+    width: auto;
+    margin-right: 119px;
+    margin-top: 50px;
+}
+
+
+.restaurant-list h2,
+#restaurant-container h2 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 24px;
+}
+#no-restaurants p {
+    text-align: center;
+    font-size: 18px;
+    background-color: #007bff !important;
+}
+
+
+.restaurant-text {
+/* card */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+margin-left: 20px;
+margin-right: 100px;
+
+/* Default/White */
+background: #FFFFFF;
+/* Gray/300 */
+border: 1px solid #DEE2E6;
+border-radius: 12px;
+
+}
+
+.restaurant-text h2 {
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 28px;
+line-height: 34px;
+text-align: left;
+color: #152536;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin-left: 20px;
+
+}
+
+.restaurant-text p {
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 28px;
+
+color: #152536;
+flex: none;
+order: 1;
+flex-grow: 0;
+text-align: left;
+margin-left: 20px;
+
+  }
+

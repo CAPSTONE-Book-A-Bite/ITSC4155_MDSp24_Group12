@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("../images/background.png") no-repeat center center/cover;
+    background-size: cover;
+}
+
+.container{
+    margin-top: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-container {
+    background-color:#FFA800;
+    padding: 20px;
+    border-radius: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    height: auto;
+    border: #333 solid 3px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-container h2 {
+    color: white;
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+.form-group input {
+    width:75%;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 40px;
+    display: block;
+    margin: 10px auto;
+    height: 40px;
+}
+.login-button {
+    width: 80%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 10px auto;
+    height: 60px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media (min-width: 768px) {
+    .login-container {
+        width: 400px;
+    }
+}
+
+.imagea{
+    display: flex;
+    justify-content: left;
+    margin-top: 135px;
+    width: auto;
+
+}
+
+.imagea img {
+    width: 60%;
+    height: 60%;
+    border: 2px solid #ccc;
+    margin-bottom: 150px;
+}
+
+.alert-danger {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-label {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+button.signup-btn {
+    background-color: #ff7f50; /* Your desired background color */
+    color: #fff; /* Your desired text color */
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(94, 84, 72, 0.1);
+    display: block;
+    margin: 10px auto;}
+
+button.signup-btn:hover {
+    background-color: #ff6347; /* Your desired hover background color */
+}
+
+
+
+

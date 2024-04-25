@@ -1,0 +1,14 @@
+{
+    "name": "Book-A-Bite-frontend",
+    "version": "1.0.0",
+    "description": "Frontend for the Book-A-Bite project",
+    "main": "app.js",
+    "scripts": {
+    "start": "static-server"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+    "axios": "^0.21.1"
+    }
+  }

@@ -26,9 +26,8 @@ const getAdmins = async (req, res) => {
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
-    );
+    return res.status(400).json({ errors: errors.array() });
+
   }
 
   const { name, email, password } = req.body;
@@ -47,25 +46,16 @@ const signup = async (req, res, next) => {
       'Admin exists already, please login instead.',
       422
     );
-    return next(error);
+    return res.status(422).json({ message: 'Admin exists already, please login instead.'});
   }
 
-  let hashedPassword;
-  try {
-    hashedPassword = await bcrypt.hash(password, 12);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not create admin, please try again.',
-      500
-    );
-    return next(error);
-  }
+
 
   // change to sql
   const createdAdmin = {
     name,
     email,
-    password: hashedPassword
+    password: password
 };
 
 let result;
@@ -84,15 +74,15 @@ try {
       'Signing up failed, please try again later.',
       500
     );
-    return next(error);
-  }
+    return res.status(500).json({ message: 'Signing up failed, please try again later.' });
+}
 
-  res
-    .status(201)
-    .json({ name: createdAdmin.name, email: createdAdmin.email });
+  res.status(201).json({ name: createdAdmin.name, email: createdAdmin.email });
 };
 
 const login = async (req,res,next) => {
+
+  console.log(req.body)
   const { email, password } = req.body;
 
   let existingAdmin;
@@ -104,26 +94,28 @@ const login = async (req,res,next) => {
       'Logging in failed, please try again later.',
       500
     );
-    return next(error);
+    return res.status(500).json({ message: 'Logging in failed, please try again later.' });
   }
 
-  if (!existingAdmin) {
+  if (existingAdmin.rows.length === 0) {
     const error = new HttpError(
-      'Invalid credentials, could not log you in.',
+      'Invalid admin user, could not log you in.',
       403
     );
-    return next(error);
+    return res.status(403).json({ message: 'Invalid admin user, could not log you in.' });
   }
 
   let isValidPassword = false;
   try {
-    isValidPassword = await bcrypt.compare(password, existingAdmin.rows[0].password);
+    if (password === existingAdmin.rows[0].password){
+      isValidPassword = true;
+    };
   } catch (err) {
     const error = new HttpError(
       'Could not log you in, please check your credentials and try again.',
       500
     );
-    return next(error);
+    return res.status(500).json({ message: 'Could not log you in, please check your credentials and try again.' });
   }
 
   if (!isValidPassword) {
@@ -131,16 +123,29 @@ const login = async (req,res,next) => {
       'Invalid credentials, could not log you in.',
       403
     );
-    return next(error);
+    return res.status(403).json({ message: 'Invalid credentials, could not log you in.' });
   }
   // succes message just to see it logged in
-  const success = "Logged in!";
-  res.json({
-    email: email,
-    message: success
-  });
+  return res.status(200).json({ hostId: existingAdmin.rows[0].id, hostName: existingAdmin.rows[0].name});
+
 };
+
+function lastReservation(req, res, next) {
+  const params = req.params;
+  const name = params.name;
+  db.query('SELECT * FROM reservations WHERE restaurant = $1 ORDER BY created_at DESC LIMIT 1;', [name], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('An error occurred while fetching the last reservation.');
+    }
+    res.json({ reservation: result.rows[0] });
+  }
+  );
+}
+
+
 
 export { getAdmins };
 export { signup };
 export { login };
+export { lastReservation };

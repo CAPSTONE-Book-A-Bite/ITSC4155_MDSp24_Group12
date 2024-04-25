@@ -25,6 +25,7 @@ const getUsers = async (req, res) => {
 // working here in signup
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
+  console.log(errors)
   if (!errors.isEmpty()) {
     return next(
       new HttpError('Invalid inputs passed, please check your data.', 422)
@@ -47,25 +48,15 @@ const signup = async (req, res, next) => {
       'User exists already, please login instead.',
       422
     );
-    return next(error);
+    return res.status(422).json({error: "User exists already, please login instead."});
   }
 
-  let hashedPassword;
-  try {
-    hashedPassword = await bcrypt.hash(password, 12);
-  } catch (err) {
-    const error = new HttpError(
-      'Could not create user, please try again.',
-      500
-    );
-    return next(error);
-  }
 
   // change to sql
   const createdUser = {
     name,
     email,
-    password: hashedPassword,
+    password: password,
     phone
 };
 
@@ -87,12 +78,14 @@ try {
   }
 
   res
-    .status(201)
-    .json({ name: createdUser.name, email: createdUser.email, phone: createdUser.phone});
+    .status(200)
+    .json({message: "User created!", user: result.rows[0]});
 };
 
 const login = async (req,res,next) => {
+  console.log("login", req.body)
   const { email, password } = req.body;
+  console.log(email, password)
 
   let existingUser;
 
@@ -106,17 +99,19 @@ const login = async (req,res,next) => {
     return next(error);
   }
 
-  if (!existingUser) {
+  if (existingUser === undefined || existingUser.rows.length === 0) {
     const error = new HttpError(
       'Invalid credentials, could not log you in.',
       403
     );
-    return next(error);
+    return res.status(403).json({error: "Invalid credentials, could not log you in."});
   }
 
   let isValidPassword = false;
   try {
-    isValidPassword = await bcrypt.compare(password, existingUser.rows[0].password);
+    if (password === existingUser.rows[0].password){
+      isValidPassword = true;
+    };
   } catch (err) {
     const error = new HttpError(
       'Could not log you in, please check your credentials and try again.',
@@ -134,10 +129,8 @@ const login = async (req,res,next) => {
   }
   // success message just to see it logged in
   const success = "Logged in!";
-  res.json({
-    email: email,
-    message: success
-  });
+  console.log(success)
+  res.status(200).json({message: success, user: existingUser.rows[0]});
 };
 
 export { getUsers };

@@ -8,11 +8,14 @@ class Header extends HTMLElement {
 <style>
         /* Header styles -Start****************************************/
 header {
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 95px;
     padding: 20px;
+    background: url(../images/background.png) center/cover no-repeat;
 }
 
 header.navbar {
@@ -31,10 +34,12 @@ header.navbar {
 }
 
 .navbar .logo img {
-    height: 100px;
+    height: 75px;
+    margin-bottom: 20px;
 }
 
-.navbar .menu-links {
+.navbar .menu-links{
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-evenly;
     list-style: none;
@@ -45,6 +50,7 @@ header.navbar {
     color: white;
     text-decoration: none;
     transition: 0.2s ease;
+    font-size: 1.2rem;
 }
 
 .navbar a:hover {
@@ -57,17 +63,15 @@ header.navbar {
             <!--Added menu-links-->
             <ul class="menu-links">
                 <!--Link for title-->
-                <a href='/frontend/index.html'>Book-A-Bite</a>
+                <a href='../index.html'>Book-A-Bite</a>
                 <!--Link for logo-->
-                <a href='/frontend/index.html' class="logo"><img src="/images/Logo.png" alt="logo"></img></a>
-                <span id="close-menu-btn" class="material-symbols-outlined">close</span>
-                <li><a class="active" href="/frontend/index.html">Home</a></li>
-                <li><a href="/frontend/html/about.html">About</a></li>
-                <li><a href="/frontend/html/contact.html">Contact</a></li>
-                <li><a href="/frontend/html/login.html">Login</a></li>
-                <li><a class="reserve" href="">Reserve</a></li>
+                <a href='../index.html' class="logo"><img src="../images/Logo.png" alt="logo"></img></a>
+                <li><a class="active" href="/index">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/hostLogin">Host Sign In</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a class="reserve" href="/signout">Signout</a></li>
             </ul>
-            <span id="menu-btn" class="material-symbols-outlined">menu</span>
             </div>
         </header>
         `;
