@@ -12,24 +12,29 @@ body {
     background: url("../images/background.png") no-repeat center center/cover;
     background-size: cover;
 }
-
-.booking-form,
-.restaurant-info,
-.booker-info {
+  
+  .restaurant-info {
     background-color: #fff;
     border-radius: 5px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin: 20px;
-    }
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: -20px;
+  }
+  
+  .booker-info {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: -70px;
+  }
 .booking-form {
-    width: 35%;
-    /* move to the left */
-    /* padding: 20px; */
+    width: 40%;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 70%;
     margin-left: 10%;
     padding: 0;
-    height: auto;
     margin-top: 10%;
 }
 
@@ -47,6 +52,7 @@ h1 {
     border-top-right-radius: 10px;
     width: 100%;
     display: block;
+    font-size: 48px;
 }
 
 h2, h3 {
@@ -56,34 +62,67 @@ h2, h3 {
 
 .form-group {
     margin-bottom: 15px;
+    display: flex;
+    gap: 10px; /* Adjust the spacing between the containers */
+}
+.input-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-group label {
+.form-group label[for="bookingDate"],
+.form-group label[for="bookingTime"]{
     display: block;
     padding: 20px;
     color: #333;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+    margin-left: 10%;
+    flex: 1; /* Take up the remaining space */
+}
+
+.form-group label[for="guests"] {
+    display: block;
+    padding: 20px;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 30px;
+    flex: 1; /* Take up the remaining space */
 }
 
 .form-group input[type="date"],
-.form-group input[type="time"],
-.form-group select {
+.form-group input[type="time"]{
     width: 70%;
     padding: 10px;
     margin-top: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-left: 10px;
-    text-align: center;
+    text-align: left;
     /* center the inputs */
     display: block;
     margin: 0 auto 25px auto;
 
+
+}
+.form-group select {
+    width: 87%;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-align: left;
+    /* center the inputs */
+    display: block;
+    margin: 0 auto 25px auto;
+    
 }
 
 .note {
-    font-size: 0.8rem;
+    font-size: 18px;
     color: #666;
     margin-top: 5px;
     margin-left: 10px;
@@ -99,6 +138,7 @@ button {
     border-radius: 5px;
     margin-top: 10px;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 button:hover {
@@ -106,14 +146,20 @@ button:hover {
 }
 
 button.book-button {
-    /* place in center */
+    /* place in center and margin from the top*/
     margin: 0 auto;
     display: block;
     padding: 10px 20px 10px 20px;
-    width: 30%;
-    background-color: #007bff;
+    width: 20%;
+    background-color: #FA8D28;
     color: #fff;
+    font-size: large;
+    margin-top: 45px;
 
+}
+
+button.book-button:hover {
+    background-color: #e03e00;
 }
 
 .info-container {
@@ -128,19 +174,28 @@ button.book-button {
 }
 
 .restaurant-info {
-    width: 40%; 
+    width: auto; 
     box-shadow: none;
     padding: 20px;
-    margin-top: 25%;
+    margin-top: 10%;
     /* move to the right */
+}
+.restaurant-image {
+    width: 364px;
+    height: 214px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 .booker-info {
-    width: 40%; 
+    width: 324px; 
     box-shadow: none;
     padding: 20px;
-    margin-top: 15%;
     /* move to the right */
+    margin-top: 10%;
 }
 
 h3.resteraunt-name {
@@ -156,7 +211,8 @@ h3.your-info {
 }
 
 h2.start-booking {
-    text-align: center;
+    text-align: left;
+    margin-left: 43px;
 }
 
 .warning-need{

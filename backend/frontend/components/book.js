@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // update the start-booking h2 text with user's name
     const userName = document.cookie.split(';').find(cookie => cookie.includes('userName')).split('=')[1];
-    document.getElementById('start-booking').innerHTML = 'Start Booking Your Table,' + userName + '!';
+    document.getElementById('start-booking').innerHTML = 'Start Booking Your Table, <br><b>' + userName + '!</b></br>';
 
 
     let restaurant;
@@ -48,14 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json(); // Parse the JSON data
         })
         .then(data => { // Access the restaurants array
+
+
             const resteraunts = data.users;
             //filter through the resteraunts to find the one that matches the query paramater
             const urlParams = new URLSearchParams(window.location.search);
             const restaurantName = urlParams.get('restaurant');
             restaurant = resteraunts.find(restaurant => restaurant.name == restaurantName);
             //update the resteraunt info with the found resteraunt
+            // removeSpaces in the name
+            const trimmedName = restaurant.name.replace(/\s/g, '');
+            document.getElementById('restaurant-image').src = '/api/images/' + trimmedName;
             document.getElementById('resteraunt-name').innerHTML = restaurant.name;
-
         })
         .catch(error => {
             console.log(error.message);
@@ -74,8 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // filter through the users to find the the one that matched the cookie
             const userId = document.cookie.split(';').find(cookie => cookie.includes('userId')).split('=')[1];
             const user = users.find(user => user.id == userId);
-            // update the user info with the found user
-            document.getElementById('start-booking').innerHTML = 'Start Booking Your Table,' + user.name + '!';
             document.getElementById('your-name').innerHTML = 'Name: ' + user.name;
             document.getElementById('your-email').innerHTML = 'Email: ' + user.email;
             document.getElementById('your-phone').innerHTML = 'Phone: ' + user.phone_number;

@@ -18,13 +18,19 @@
         <h1>Online Booking</h1>
         <h2 class="start-booking" id="start-booking">Start Booking Your Table, Username!</h2>
         <form id="booked">
-            <div class="form-group">
-                <label for="bookingDate">Select Booking Date and Time</label>
-                <input type="date" id="bookingDate" name="bookingDate" required>
+          <div class="form-group">
+            <div class="input-container">
+                <label for="bookingDate">Select Booking Date:</label>
+                <input type="date" id="bookingDate" name="bookingDate" placeholder="MM/DD/YYYY" required>
+              </div>
+            <div class="input-container">
+                <label for="bookingTime">Select Booking Time:</label>
                 <input type="time" id="bookingTime" name="bookingTime" required>
-                <div id="warning-need" class="warning-need"></div>
             </div>
+            <div id="warning-need" class="warning-need"></div>
+        </div>
             <div class="form-group">
+              <div class="input-container">
                 <label for="guests">How many guests will be dining?*</label>
                 <select id="guests" name="guests" required>
                     <option value="">Number of Guests...</option>
@@ -35,6 +41,7 @@
                     <option value="5">5</option>
                     <option value="6">6</option>
                   </select>
+              </div>
             </div>
             <p class="note"><b>* </b>Restaurant Host and/or Employees have the right to CANCEL any reservation they see fit for any appropriate reason</p>
             <button type="submit" class="book-button">Book it!</button>
@@ -42,6 +49,7 @@
     </div>
     <div class="info-container">
       <div class="restaurant-info">
+          <img id="restaurant-image" class="restaurant-image"><img>
           <h3 class="resteraunt-name" id="resteraunt-name">Restaurant A</h3>
           <p>Open Hours: M - F: 7:00 AM - 10:00 P</p>
       </div>

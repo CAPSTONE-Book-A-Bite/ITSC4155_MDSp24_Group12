@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   //check if user is logged in and redirect to login page if not
   const userId = document.cookie.split(';').find(cookie => cookie.includes('userId'));
   if (!userId) {
     window.location.href = '/login';
   }
-  fetch('http://localhost:3001/api/reservations')
+  await fetch('http://localhost:3001/api/reservations')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch reservations');
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // fetch userInfo
 
-    fetch('http://localhost:3001/api/users')
+    await fetch('http://localhost:3001/api/users')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch users');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // fetch resteraunts the user can book
 
-    fetch('http://localhost:3001/api/admin')
+    await fetch('http://localhost:3001/api/admin')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch restaurants');
@@ -114,7 +114,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const restaurantContainer = document.getElementById('restaurant-list');
         const restaurants = data.users; // Access the restaurants array
         if (Array.isArray(restaurants)) {
-            restaurants.forEach(restaurant => {
+            restaurants.forEach(async (restaurant) => {
+              let lastUpdated = 'N/A';
+              // fetch the last updated time for the restaurant
+              await fetch(`http://localhost:3001/api/admin/lastUpdated/${restaurant.name}`)
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Failed to fetch last updated time');
+                  }
+                  return response.json(); // Parse the JSON data
+                })
+                .then(data => {
+                  console.log(data);
+                  lastUpdated = new Date(data.reservation.created_at).toLocaleString();
+                  console.log(lastUpdated + "last updated");
+                })
+                .catch(error => {
+                  console.error('Error fetching last updated time:', error);
+                  // Handle error
+                });
+
+                // compare lastUpdated to current time and display the time difference
+                const now = new Date();
+                const lastUpdatedTime = new Date(lastUpdated);
+                const timeDifference = Math.floor((now - lastUpdatedTime) / 1000 / 60);
+                console.log(timeDifference + "time difference")
+                if (timeDifference < 1) {
+                  lastUpdated = 'Just now';
+                } else if (timeDifference < 60) {
+                  lastUpdated = `${timeDifference} minutes ago`;
+                }
+                else if (timeDifference >= 60 && timeDifference < 1440) {
+                  lastUpdated = `${Math.floor(timeDifference / 60)} hours ago`;
+                }
+                else if (timeDifference >= 1440){
+                  lastUpdated = `${Math.floor(timeDifference / 1440)} days ago`;
+                }
+                
+
+                
+
                 let restaurantName = restaurant.name;
                 restaurantName = restaurantName.replace(/\s/g, '');
                 const restaurantDiv = document.createElement('div');
@@ -123,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img class="restaurant-image" src="/api/images/${restaurantName}" alt="restaurant image">
                         <h3 class="restaurant-name">${restaurant.name}</h3>
                         <button class="availableTimes" id="book-button">See Available Times</button>
+                        <p class="last-updated">Last updated: ${lastUpdated}</p>
                 `;
                 // add event listener to book button
                 restaurantDiv.querySelector('.availableTimes').addEventListener('click', () => {

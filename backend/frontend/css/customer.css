@@ -35,20 +35,21 @@ body{
 .upcoming-reservations{
     background-color: #fff;
     padding: 20px;
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 20%;
-    left: 5%;
-    width: 530px;
+    margin-left: 100px;
+    width: 515px;
     margin-top: 50px;
+    height: 111px;
 }
 
 .upcoming-reservations h2{
 font-family: 'Inter';
 font-style: normal;
 font-weight: 600;
-font-size: 30px;
+font-size: 28px;
 color: #152536;
 flex: none;
 order: 0;
@@ -60,7 +61,7 @@ text-align: left;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
-font-size: 20px;
+font-size: 16px;
 line-height: 28px;
 color: #152536;
 flex: none;
@@ -73,11 +74,11 @@ text-align: left;
 #reservation-list{
     background-color: #fff;
     padding: 20px;
-    border-radius: 50px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 40%;
-    left: 5%;
+    margin-left: 100px;
     height: auto;
     width: auto;
     margin-top: 100px;
@@ -148,20 +149,30 @@ text-align: left;
   }
   
   /* Hover effect on table row */
-  #reservation-table tr:hover {
+#reservation-table tr:hover {
     background-color: #e0e0e0;
   }
-  .restaurant-info {
-    display: inline-block;
-    margin: 20px;
-    padding: 16px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background: #FFFFFF;
-    border: 1px solid #DEE2E6;
-    border-radius: 20px;
+.restaurant-info {
+/* cardImage */
 
-    margin-top: 20px;
+box-sizing: border-box;
+
+/* Auto layout */
+display: inline-block;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+margin-left: 20px;
+margin-right: 20px;
+margin-top: 20px;
+width: 364px;
+
+
+
+/* Default/White */
+background: #FFFFFF;
+border-radius: 12px 0px 0px 12px;
+
 }
 
 .restaurant-info h3 {
@@ -172,7 +183,28 @@ font-size: 20px;
 line-height: 24px;
 color: #212529;
 text-align: left;
-margin-left: 5px;
+margin-left: 15px;
+}
+
+.restaurant-info p {
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+
+/* Gray/600 */
+color: #6C757D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+margin-left: 15px;
+text-align: left;
 }
 
 .availableTimes{
@@ -189,24 +221,23 @@ border: none;
 cursor: pointer;
 /*alighn to left of div */
 text-align: left;
+margin-left: 8px;
 }
 
 .restaurant-image{
-  width: 400px;
-  height: 200px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  margin-left: -16px;
-  margin-right: -16px;
-  margin-top: -16px;
+  width: 364px;
+  height: 214px;
+  border-top-left-radius: 12px;
+
+
 }
 .restaurant-list {
     padding: 20px;
     position: absolute;
-    top: 20%;
+    top: 18%;
     left: 45%;
     width: auto;
-    margin-right: 20px;
+    margin-right: 119px;
     margin-top: 50px;
 }
 
@@ -222,22 +253,27 @@ text-align: left;
     font-size: 18px;
     background-color: #007bff !important;
 }
-.restaurant-list p,
-#restaurant-container p {
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: 18px;
-}
+
 
 .restaurant-text {
-    border-radius: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background: #FFFFFF;
-    border: 1px solid #DEE2E6;
-    border-radius: 20px;
-    margin-top: -20px;
-    margin-left: 20px;
-    margin-right: 20px;
+/* card */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+margin-left: 20px;
+margin-right: 100px;
+
+/* Default/White */
+background: #FFFFFF;
+/* Gray/300 */
+border: 1px solid #DEE2E6;
+border-radius: 12px;
+
 }
 
 .restaurant-text h2 {

@@ -119,7 +119,7 @@ const createReservation = async (req, res, next) => {
 
         // Insert a new reservation into the database
         createdReservation = await db.query(
-            `INSERT INTO reservations (user_id, table_number, num_guests, datetime, name, email, phone_number, restaurant) 
+            `INSERT INTO reservations (user_id, table_number, num_guests, datetime, name, email, phone_number, restaurant, created_at) 
             VALUES ($1, null, $2, $3, $4, $5, $6, $7) 
             RETURNING *;`,
             [user_id, num_guests, datetime, user.name, user.email, user.phone_number, restaurant.name]

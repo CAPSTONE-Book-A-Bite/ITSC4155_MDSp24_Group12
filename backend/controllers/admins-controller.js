@@ -130,6 +130,22 @@ const login = async (req,res,next) => {
 
 };
 
+function lastReservation(req, res, next) {
+  const params = req.params;
+  const name = params.name;
+  db.query('SELECT * FROM reservations WHERE restaurant = $1 ORDER BY created_at DESC LIMIT 1;', [name], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('An error occurred while fetching the last reservation.');
+    }
+    res.json({ reservation: result.rows[0] });
+  }
+  );
+}
+
+
+
 export { getAdmins };
 export { signup };
 export { login };
+export { lastReservation };
