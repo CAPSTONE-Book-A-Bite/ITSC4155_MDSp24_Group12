@@ -14,8 +14,8 @@ header {
     left: 0;
     width: 100%;
     height: 95px;
-    padding: 20px;
     background: url(../images/background.png) center/cover no-repeat;
+    font-family: 'Poppins', sans-serif;
 }
 
 header.navbar {
@@ -23,7 +23,8 @@ header.navbar {
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 0 0 0;
+    height: 95px;
 }
 
 .navbar .logo {
@@ -35,15 +36,22 @@ header.navbar {
 
 .navbar .logo img {
     height: 75px;
-    margin-bottom: 20px;
 }
 
 .navbar .menu-links{
-    margin-bottom: 10px;
     display: flex;
     justify-content: space-evenly;
     list-style: none;
     gap: 35px;
+}
+
+.navbar .menu-links li {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s ease;
+    margin-top: 20px;
 }
 
 .navbar a {
@@ -62,9 +70,7 @@ header.navbar {
             <div class="navbar">
             <!--Added menu-links-->
             <ul class="menu-links">
-                <!--Link for title-->
-                <a href='../index.html'>Book-A-Bite</a>
-                <!--Link for logo-->
+                <li><a href='../index.html'>Book-A-Bite</a></li>
                 <a href='../index.html' class="logo"><img src="../images/Logo.png" alt="logo"></img></a>
                 <li><a class="active" href="/index">Home</a></li>
                 <li><a href="/about">About</a></li>

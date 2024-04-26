@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
     nextWeek.setDate(nextWeek.getDate() + 7);
     const upcomingReservations = reservations.filter(reservation => new Date(reservation.datetime) >= today && new Date(reservation.datetime) <= nextWeek);
     console.log(upcomingReservations);
+    // sort reservations by date
+    upcomingReservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
     //update reservations for this upcoming week text, corresponding html element is <h3 class="reservation-number">There are <u class="underlined-reservations">9</u> reservations for this upcoming week</h3>
     document.querySelector('.underlined-reservations').innerHTML = upcomingReservations.length;
     // if there are no reservations for the week, display a message
@@ -81,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <p hidden id="reservation-id" class="reservation-id">${reservation.id}</p>
         `;
         table.appendChild(row);
+        console.log('table rows now:', table.rows.length)
         numCount++;
     });
     }
@@ -98,27 +101,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // function to cancel a reservation when the cancel button is clicked
 
-document.getElementById('reservations-table').addEventListener('click', async (event) => {
+document.getElementById('reservations-table').addEventListener('click', (event) => {
     if (event.target.className === 'cancel-button') {
       const reservationId = event.target.parentElement.parentElement.querySelector('.reservation-id').innerHTML;
       console.log(reservationId);
       try {
-        const response = await fetch(`http://localhost:3001/api/reservations/${reservationId}`, {
+        const response = fetch(`http://localhost:3001/api/reservations/${reservationId}`, {
           method: 'DELETE',
         });
-        if (!response.ok) {
+        if (!response.status == 200) {
           throw new Error('Failed to cancel reservation');
         }
         // remove the row from the table
         event.target.parentElement.parentElement.remove();
 
-        // update the number of reservations
-        const reservationCount = document.querySelector('.underlined-reservations');
-        reservationCount.innerHTML = parseInt(reservationCount.innerHTML) - 1;
         // update no reservations message
-        if (document.getElementById('reservations-table').rows.length == 1) {
-          document.querySelector('.reservation-number').innerHTML = 'There are no reservations for this upcoming week';
+        const table = document.getElementById('reservations-table');
+        if (table.rows.length == 1) {
+          document.getElementById('reservation-number').innerHTML = 'There are no reservations for this upcoming week';
         }
+        else if (table.rows.length == 2) {
+          document.getElementById('reservation-number').innerHTML = 'There is <u>1</u> reservation for this upcoming week';
+        }
+        else {
+          document.getElementById('reservation-number').innerHTML = `There are <u class="underlined-reservations">${table.rows.length - 1}</u> reservations for this upcoming week`;
+        }
+
       } catch (error) {
         console.error('Error canceling reservation:', error);
         // Handle error

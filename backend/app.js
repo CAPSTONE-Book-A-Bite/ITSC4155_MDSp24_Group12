@@ -141,6 +141,10 @@ app.get('/hostRegister', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/hostRegister.html');
 });
 
+app.get('/confirmation', (req, res) => {
+  res.sendFile(__dirname + '/frontend/html/confirmation.html');
+});
+
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

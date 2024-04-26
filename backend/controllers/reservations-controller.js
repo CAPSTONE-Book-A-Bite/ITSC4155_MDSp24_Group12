@@ -119,7 +119,7 @@ const createReservation = async (req, res, next) => {
 
         // Insert a new reservation into the database
         createdReservation = await db.query(
-            `INSERT INTO reservations (user_id, table_number, num_guests, datetime, name, email, phone_number, restaurant, created_at) 
+            `INSERT INTO reservations (user_id, table_number, num_guests, datetime, name, email, phone_number, restaurant) 
             VALUES ($1, null, $2, $3, $4, $5, $6, $7) 
             RETURNING *;`,
             [user_id, num_guests, datetime, user.name, user.email, user.phone_number, restaurant.name]
@@ -184,12 +184,13 @@ const deleteReservation = async (req, res, next) => {
     try {
         const reservation = await db.query('DELETE FROM reservations WHERE id = $1', [reservationId]);
         
-        if (reservation.rowCount === 0) {
+        if (reservation.rowCount == 0) {
             const error = new HttpError('Could not find a reservation for this id.', 404);
             return next(error);
         }
 
-        res.status(200).json({ message: 'Deleted reservation.' });
+        return res.status(200).json({ message: 'Deleted reservation.' });
+
     } catch (err) {
         console.error('Error deleting reservation:', err);
         const error = new HttpError('Something went wrong, could not delete reservation.', 500);
