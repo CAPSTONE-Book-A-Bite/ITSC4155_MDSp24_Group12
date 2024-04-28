@@ -19,14 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             const resteraunts = data.users;
-            //filter through the resteraunts to find the one that matches the query paramater
             const urlParams = new URLSearchParams(window.location.search);
             const restaurantName = urlParams.get('restaurant');
             // find the resteraunt that matches the query paramater even if the name has spaces
             restaurant = resteraunts.find(resteraunt => resteraunt.name.replace(/\s/g, '') === restaurantName);
 
-            //update the resteraunt info with the found resteraunt
-            // removeSpaces in the name
             const trimmedName = restaurant.name.replace(/\s/g, '');
             document.getElementById('restaurant-image').src = '/api/images/' + trimmedName;
             document.getElementById('resteraunt-name').innerHTML = restaurant.name;
