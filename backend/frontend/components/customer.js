@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                   return response.json(); // Parse the JSON data
                 })
                 .then(data => {
-                  console.log(data);
                     lastUpdated = new Date(data.reservation.created_at);
                     lastUpdated.setHours(lastUpdated.getHours() - 4);
                     lastUpdated = lastUpdated.toLocaleString();
@@ -187,7 +186,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('reservation-table').addEventListener('click', async (event) => {
       if (event.target.className === 'cancel-button') {
         const reservationId = event.target.parentElement.parentElement.querySelector('.reservation-id').innerHTML;
-        console.log(reservationId);
         try {
           const response = await fetch(`http://localhost:3001/api/reservations/${reservationId}`, {
             method: 'DELETE',

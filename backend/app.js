@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import pg from "pg";
 import { userRouter } from './routes/users-routes.js';
 import { adminRouter } from './routes/admins-routes.js';

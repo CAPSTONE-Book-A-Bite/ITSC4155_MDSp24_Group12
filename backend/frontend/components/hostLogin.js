@@ -13,8 +13,6 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
             body: JSON.stringify(loginData),
         });
         const data = await response.json();
-        console.log(data);
-        console.log(response.status);
         if (response.status != 200) {
             throw new Error(data.message);
         }
@@ -23,7 +21,6 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
         // Redirect to home page
         window.location.href = "/hostHome";
     } catch (error) {
-        console.log(JSON.stringify(error.message));
         //alert user with new div element in login container
         const alert = document.createElement("div");
         alert.className = "alert-danger";

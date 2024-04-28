@@ -19,7 +19,6 @@
     "dirname": "^0.1.0",
     "dotenv": "^16.4.4",
     "ejs": "^3.1.9",
-    "eslint": "^9.1.1",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "method-override": "^3.0.0",
@@ -30,5 +29,10 @@
     "sharp": "^0.33.3",
     "twilio": "^4.22.0",
     "url": "^0.11.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "eslint": "^9.1.1",
+    "globals": "^15.1.0"
   }
 }

@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextWeek = new Date(today);
     nextWeek.setDate(nextWeek.getDate() + 7);
     const upcomingReservations = reservations.filter(reservation => new Date(reservation.datetime) >= today && new Date(reservation.datetime) <= nextWeek);
-    console.log(upcomingReservations);
     // sort reservations by date
     upcomingReservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
     //update reservations for this upcoming week text, corresponding html element is <h3 class="reservation-number">There are <u class="underlined-reservations">9</u> reservations for this upcoming week</h3>
@@ -83,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <p hidden id="reservation-id" class="reservation-id">${reservation.id}</p>
         `;
         table.appendChild(row);
-        console.log('table rows now:', table.rows.length)
         numCount++;
     });
     }
@@ -104,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('reservations-table').addEventListener('click', (event) => {
     if (event.target.className === 'cancel-button') {
       const reservationId = event.target.parentElement.parentElement.querySelector('.reservation-id').innerHTML;
-      console.log(reservationId);
       try {
         const response = fetch(`http://localhost:3001/api/reservations/${reservationId}`, {
           method: 'DELETE',

@@ -7,7 +7,10 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
         body: formData
     });
     const data = await response.json();
-
+    if (response.status != 201) {
+        throw new Error(data.message);
+    }
+    
 
     // actually sign up the user
     try{
