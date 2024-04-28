@@ -1,44 +1,45 @@
 <html lang="en">
-    <!-- Create Customer page that is after you login, stores the reservations the customer has and also displays the resteraunts which a customer can select to book from-->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Description to match platform usage-->
-        <meta name="description"
-          content="Book-A-Bite is a web application that allows users to reserve tables at restaurants.">
-        <!--Title to match platform name -->
-        <title>Book-A-Bite</title>
-        <!--Link to css file -->
-        <link rel="stylesheet" href="../css/hostHome.css">
-      </head>
-      <header-component></header-component>
+  <!-- Create Customer page that is after you login, stores the reservations the customer has and also displays the resteraunts which a customer can select to book from-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Description to match platform usage-->
+    <meta
+      name="description"
+      content="Book-A-Bite is a web application that allows users to reserve tables at restaurants."
+    />
+    <!--Title to match platform name -->
+    <title>Book-A-Bite</title>
+    <!--Link to css file -->
+    <link rel="stylesheet" href="../css/hostHome.css" />
+  </head>
+  <header-component></header-component>
 
-
-<body>
-  <div class="container">
-    <h1 class="restaurant-text">Restaurant Booking List</h2>
-    <div class="total-reservations">
-      <h2 class="reservation-text">Total Reservations</h2>
-      <h3 class="reservation-number" id="reservation-number">There are <u class="underlined-reservations">0</u> reservations for this upcoming week</h3>
+  <body>
+    <div class="container">
+      <h1 class="restaurant-text">Restaurant Booking List</h1>
+      <div class="total-reservations">
+        <h2 class="reservation-text">Total Reservations</h2>
+        <h3 class="reservation-number" id="reservation-number">
+          There are <u class="underlined-reservations">0</u> reservations for
+          this upcoming week
+        </h3>
+      </div>
+      <div class="reservations-list">
+        <table class="reservations-table" id="reservations-table">
+          <tr>
+            <th>#</th>
+            <th>Customer Name</th>
+            <th>Customer Email</th>
+            <th>Date</th>
+            <th width="15%">Time</th>
+            <th>Party Size</th>
+            <th class="cancel-header">Cancel Reservation</th>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class="reservations-list">
-      <table class="reservations-table" id="reservations-table">
-        <tr>
-          <th>#</th>
-          <th>Customer Name</th>
-          <th>Customer Email</th>
-          <th>Date</th>
-          <th width="15%">Time</th>
-          <th>Party Size</th>
-          <th class="cancel-header">Cancel Reservation</th>
-        </tr>
-      </table>
-    </div> 
-
-
-
-  </div>
-</body>
-<script src="../components/header.js"></script>
-<script src="../components/host.js"></script>
+  </body>
+  <script src="../components/header.js"></script>
+  <script src="../components/host.js"></script>
 </html>

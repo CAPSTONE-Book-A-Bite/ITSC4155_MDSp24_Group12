@@ -22,6 +22,6 @@ userRouter.post(
   signup
 );
 
-userRouter.post('/login',bodyParser.json(), login);
+userRouter.post('/login', bodyParser.json(), login);
 
 export { userRouter };
