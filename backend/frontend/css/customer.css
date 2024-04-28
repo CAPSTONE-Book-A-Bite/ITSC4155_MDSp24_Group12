@@ -39,8 +39,8 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 20%;
-    margin-left: 100px;
-    width: 515px;
+    margin-left: 200px;
+    width: 514.41px;
     margin-top: 50px;
     height: 111px;
 }
@@ -78,7 +78,7 @@ text-align: left;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 40%;
-    margin-left: 100px;
+    margin-left: 200px;
     height: auto;
     width: auto;
     margin-top: 100px;
@@ -103,9 +103,9 @@ text-align: left;
     padding: 8px;
     text-align: left;
     border-bottom: 3px solid #e66114;
-    border-left: 3px solid #e66114;
-    border-top: 3px solid #e66114;
-    border-right: 3px solid #e66114;
+    border-left: 2px solid #e66114;
+    border-top: 2px solid #e66114;
+    border-right: 2px solid #e66114;
 
 }
 #reservation-table td {
@@ -135,11 +135,36 @@ text-align: left;
 #reservation-table tr:last-child {
     border-bottom: 2px solid #e66114;
 }
+/* last column of the table except the table header */
+#reservation-table tr:not(:first-child) td:last-child {
+  border-left: 0;
+}
+.second-to-last-column  {
+  border-right: 0 !important;
+  text-align: center;
+}
+
+.lastColumn {
+  border-left: 0 !important;  
+}
+
+.lastHeader{
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+  padding : 0 !important;
+  border-right: 0 !important;
+}
+
+.secondLastHeader {
+  border-right: 2px solid #e66114 !important;
+  border-bottom: 0 !important;
+}
 
   
   /* Table Row */
   #reservation-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: lightgray;
   }
   
   /* Table Data Cells */
@@ -147,11 +172,7 @@ text-align: left;
     padding: 8px;
     border-bottom: 1px solid #ddd; 
   }
-  
-  /* Hover effect on table row */
-#reservation-table tr:hover {
-    background-color: #e0e0e0;
-  }
+
 .restaurant-info {
 /* cardImage */
 
@@ -237,8 +258,8 @@ margin-left: 8px;
     top: 18%;
     left: 45%;
     width: auto;
-    margin-right: 119px;
-    margin-top: 50px;
+    margin-top: 45px;
+    margin-left: 100px;
 }
 
 
@@ -266,14 +287,14 @@ flex-direction: column;
 align-items: flex-start;
 padding: 0px;
 margin-left: 20px;
-margin-right: 100px;
+margin-right: 119px;
 
 /* Default/White */
 background: #FFFFFF;
 /* Gray/300 */
 border: 1px solid #DEE2E6;
 border-radius: 12px;
-
+padding-bottom: 10px;
 }
 
 .restaurant-text h2 {
@@ -289,7 +310,7 @@ flex: none;
 order: 0;
 flex-grow: 0;
 margin-left: 20px;
-
+margin-top: 40px;
 }
 
 .restaurant-text p {
@@ -309,3 +330,11 @@ margin-left: 20px;
 
   }
 
+.cancel-button{
+    background-color: #e66114;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}

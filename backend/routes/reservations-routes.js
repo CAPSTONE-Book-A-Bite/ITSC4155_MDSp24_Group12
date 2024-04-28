@@ -29,6 +29,6 @@ reservationRouter.patch(
   updateReservation
 );
 
-reservationRouter.delete('/:rid',bodyParser.json(), deleteReservation);
+reservationRouter.delete('/:rid', deleteReservation);
 
 export { reservationRouter };

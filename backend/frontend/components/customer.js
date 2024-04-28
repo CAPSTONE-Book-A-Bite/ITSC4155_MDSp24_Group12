@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         <th>Restaurant</th>
         <th>Date</th>
         <th>Time</th>
-        <th>Party Size</th>
-        <th>Cancel</th>
+        <th class="secondLastHeader" colspan="2">Party Size</th>
+        <th class="lastHeader"></th>
         </tr>`;
         let reservations = data.reservations; // Access the reservations array
         console.log(JSON.stringify(reservations) + "before filter")
@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', async () => {
           let reservationCount = 1;
           reservations.forEach(reservation => {
             const date = new Date(reservation.datetime).toDateString();
-            const time = new Date(reservation.datetime).toLocaleTimeString();
+            let time = new Date(reservation.datetime).toLocaleTimeString();
+            // remove seconds from time but keep AM/PM 
+            time = time.slice(0, -6) + time.slice(-3);
+
 
 
             // create a new row for each reservation
@@ -45,8 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             <td>${reservation.restaurant}</td>
             <td>${date}</td>
             <td>${time}</td>
-            <td>${reservation.num_guests}</td>
-            <td><button class="cancel-button" id="cancel-button">Cancel</button></td>
+            <td class="second-to-last-column">${reservation.num_guests}</td>
+            <td class= "lastColumn"><button class="cancel-button" id="cancel-button">Cancel</button></td>
             <p hidden id="reservation-id" class="reservation-id">${reservation.id}</p>
             `;
             reservationCount++;
@@ -57,8 +60,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const now = new Date();
             // fetch closest reservation to now 
             const reservationDate = new Date(reservations[0].datetime);
+            let reservationTime = new Date(reservations[0].datetime).toLocaleTimeString();
+            // remove seconds from time but keep AM/PM
+            reservationTime = reservationTime.slice(0, -6) + reservationTime.slice(-3);
             if (reservationDate > now) {
-              noReservations.innerHTML = `Your next reservation is on ${reservationDate.toDateString()} at ${reservationDate.toLocaleTimeString()}`;
+              noReservations.innerHTML = `Your next reservation is on ${reservationDate.toDateString()} at ${reservationTime}`;
             } else {
               noReservations.innerHTML = 'No reservations found';
             }
@@ -126,8 +132,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 })
                 .then(data => {
                   console.log(data);
-                  lastUpdated = new Date(data.reservation.created_at).toLocaleString();
-                  console.log(lastUpdated + "last updated");
+                    lastUpdated = new Date(data.reservation.created_at);
+                    lastUpdated.setHours(lastUpdated.getHours() - 4);
+                    lastUpdated = lastUpdated.toLocaleString();
+                   console.log(lastUpdated + "last updated");
                 })
                 .catch(error => {
                   console.error('Error fetching last updated time:', error);
@@ -201,6 +209,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           const noReservations = document.getElementById('no-reservations');
           if (document.getElementById('reservation-table').rows.length == 1) {
             noReservations.innerHTML = 'No reservations found';
+          }
+
+          // update no reservations message with most recent reservation
+          if (document.getElementById('reservation-table').rows.length > 1) {
+            const now = new Date();
+            const reservationDate = new Date(document.getElementById('reservation-table').rows[1].cells[1].innerHTML);
+            const reservationTime = document.getElementById('reservation-table').rows[1].cells[2].innerHTML;
+            if (reservationDate > now) {
+              noReservations.innerHTML = `Your next reservation is on ${reservationDate.toDateString()} at ${reservationTime}`;
+            } else {
+              noReservations.innerHTML = 'No reservations found';
+            }
           }
         } catch (error) {
           console.error('Error canceling reservation:', error);

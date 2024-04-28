@@ -131,7 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(data);
             // Redirect to confirmation page
             alert('Reservation created successfully');
-            window.location.href = '/customer';
+            // reroute to confirmation page with the reservation id passed in as a query parameter and restaurant name trimmed of spaces
+            window.location.href = '/confirmation?reservation=' + data.reservation.id + '&restaurant=' + restaurantName.replace(/\s/g, '');
         } catch (error) {
             console.log(JSON.stringify(error.message));
             //alert user with new div element in login container
@@ -143,6 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 alert.remove();
             }, 5000);
+            // clear the form
+            bookingForm.reset();
         }
 
 
