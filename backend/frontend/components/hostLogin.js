@@ -1,6 +1,6 @@
 document.getElementById("login-form").addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent form submission
-    
+
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const loginData = { email, password };
@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.location.href = "/hostHome";
     }
     const userId = getCookie("userId");
-    if (userId){
+    if (userId) {
         window.location.href = "/customer";
     }
-    }
+}
 );
 
 document.getElementById('register-form').addEventListener('submit', async (event) => {

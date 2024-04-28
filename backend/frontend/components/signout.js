@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
     //change userName on the id logout-text
-    if(document.cookie.includes('hostName')){
+    if (document.cookie.includes('hostName')) {
         document.getElementById('logout-text').innerHTML = `You have Logged out of<br>${document.cookie.split('; ').find(row => row.startsWith('hostName')).split('=')[1]}</br>`;
     }
-    else{
+    else {
         document.getElementById('logout-text').innerHTML = `You have Logged out of<br>${document.cookie.split('; ').find(row => row.startsWith('userName')).split('=')[1]}</br>`;
     }
-    
-    
+
+
 
     document.cookie = 'userId=; max-age=0';
     document.cookie = 'userName=; max-age=0';

@@ -5,7 +5,7 @@ document.getElementById("signupForm").addEventListener("submit", async (event) =
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const phone = document.getElementById("phone").value;
-    const signupData = { name, email, password, phone};
+    const signupData = { name, email, password, phone };
     try {
         const response = await fetch("http://localhost:3001/api/users/signup", {
             method: "POST",
