@@ -1,5 +1,5 @@
 import express from 'express';
-import { body, check } from 'express-validator';
+import { check } from 'express-validator';
 import { getAdmins, signup, login, lastReservation } from '../controllers/admins-controller.js'
 import bodyParser from 'body-parser';
 const adminRouter = express.Router();

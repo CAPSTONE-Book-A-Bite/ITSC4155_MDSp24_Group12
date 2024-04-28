@@ -27,9 +27,7 @@ const signup = async (req, res, next) => {
   const errors = validationResult(req);
   console.log(errors)
   if (!errors.isEmpty()) {
-    return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
-    );
+    return res.status(422).json({ errors: errors.array() });
   }
 
   const { name, email, password, phone } = req.body;
@@ -74,7 +72,7 @@ try {
       'Signing up failed, please try again later.',
       500
     );
-    return next(error);
+    return res.status(500).json({error: "Signing up failed, please try again later."});
   }
 
   res
@@ -96,7 +94,7 @@ const login = async (req,res,next) => {
       'Logging in failed, please try again later.',
       500
     );
-    return next(error);
+    return res.status(500).json({error: "Logging in failed, please try again later."});
   }
 
   if (existingUser === undefined || existingUser.rows.length === 0) {
@@ -113,11 +111,7 @@ const login = async (req,res,next) => {
       isValidPassword = true;
     };
   } catch (err) {
-    const error = new HttpError(
-      'Could not log you in, please check your credentials and try again.',
-      500
-    );
-    return next(error);
+    return res.status(500).json({error: "Could not log you in, please check your credentials and try again."});
   }
 
   if (!isValidPassword) {
@@ -125,7 +119,7 @@ const login = async (req,res,next) => {
       'Invalid credentials, could not log you in.',
       403
     );
-    return next(error);
+    return res.status(403).json({error: "Invalid credentials, could not log you in."});
   }
   // success message just to see it logged in
   const success = "Logged in!";

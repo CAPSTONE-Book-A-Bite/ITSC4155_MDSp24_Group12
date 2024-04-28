@@ -24,7 +24,7 @@ const getReservations = async (req,res,next) => {
           'Something went wrong, could not find a reservation.',
           500
         );
-        return next(error);
+        return res.status(500).json({ error: error });
     }
     res.json({ reservations: reservation.rows });
 };
@@ -42,7 +42,7 @@ const getReservationById = async (req,res,next) => {
           'Something went wrong, could not find a reservation.',
           500
         );
-        return next(error);
+        return res.status(500).json({ error: error });
     }
 
     if (!reservation) {
@@ -50,7 +50,7 @@ const getReservationById = async (req,res,next) => {
           'Could not find reservation for the provided id.',
           404
         );
-        return next(error);
+        return res.status(404).json({ error: error });
     }
     
     res.json({ reservation: reservation.rows });
@@ -66,7 +66,7 @@ const getReservationsByUserId = async (req,res,next) => {
             'Fetching reservation failed, please try again later.',
             500
         );
-        return next(error);
+        return res.status(500).json({ error: error });
     }
 
     res.json({
@@ -129,7 +129,7 @@ const createReservation = async (req, res, next) => {
     } catch (err) {
         console.error('Error creating reservation:', err);
         const error = new HttpError('Creating reservation failed, please try again.', 500);
-        return next(error);
+        return res.status(500).json({ error: error });
     }
 
     const format = 'YYYY-MM-DD HH:mm:ss Z';
@@ -140,9 +140,7 @@ const createReservation = async (req, res, next) => {
 const updateReservation = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return next(
-            new HttpError('Invalid inputs passed, please check your data.', 422)
-        );
+        return res.status(422).json({ errors: errors.array() });
     }
 
     const { table_number, num_guests } = req.body;
@@ -157,7 +155,8 @@ const updateReservation = async (req, res, next) => {
 
         // If reservation not found
         if (!reservation) {
-            return next(new HttpError('Reservation not found.', 404));
+    
+            return res.status(404).json({ message: 'Could not find reservation for the provided id.' });
         }
 
         // Check if the user is authorized to update the reservation
@@ -186,7 +185,7 @@ const deleteReservation = async (req, res, next) => {
         
         if (reservation.rowCount == 0) {
             const error = new HttpError('Could not find a reservation for this id.', 404);
-            return next(error);
+            return res.status(404).json({ error: error });
         }
 
         return res.status(200).json({ message: 'Deleted reservation.' });
@@ -194,7 +193,7 @@ const deleteReservation = async (req, res, next) => {
     } catch (err) {
         console.error('Error deleting reservation:', err);
         const error = new HttpError('Something went wrong, could not delete reservation.', 500);
-        return next(error);
+        return res.status(500).json({ error: error });
     }
 
     // if (place.creator.id !== req.userData.userId) {
