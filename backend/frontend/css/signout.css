@@ -1,58 +1,57 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-body{
-    background: url("../images/background.png") no-repeat center center/cover;
-    background-size: cover;
-    background-repeat: no-repeat;
+body {
+  background: url("../images/background.png") no-repeat center center/cover;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .signout {
-    text-align: center;
+  text-align: center;
 }
 
-.logout-text{
-    font-size: 48px;
-    color: white;
-    font-family: 'Times New Roman', serif;
-    margin-bottom: 50px;
+.logout-text {
+  font-size: 48px;
+  color: white;
+  font-family: "Times New Roman", serif;
+  margin-bottom: 50px;
 }
 
-.thank-you{
-/* thin white text */
-    color: white;
-    font-size: 40px;
-    font-weight: 100;
-    margin-bottom: 25px;
-    width: 100%;
-    font-family: Garamond, serif;
+.thank-you {
+  /* thin white text */
+  color: white;
+  font-size: 40px;
+  font-weight: 100;
+  margin-bottom: 25px;
+  width: 100%;
+  font-family: Garamond, serif;
 }
 
-.sign-in{
-    /* black button white text should be bold and same size as the thank you text */
-    background-color: black;
-    color: white;
-    font-size: 25px;
-    font-family: Garamond, serif;
-    width: 75%;
+.sign-in {
+  /* black button white text should be bold and same size as the thank you text */
+  background-color: black;
+  color: white;
+  font-size: 25px;
+  font-family: Garamond, serif;
+  width: 75%;
 }
 
-.sign-in:hover{
-    background-color: darkgrey;
-    text-decoration: solid;
+.sign-in:hover {
+  background-color: darkgrey;
+  text-decoration: solid;
 }
 
-.home-page{
-    /* white text with underline */
-    color: white;
-    text-decoration: underline;
-    font-size: 25px;
-    font-family: Times New Roman, serif;
-    /* italic */
-    font-style: italic;
-
+.home-page {
+  /* white text with underline */
+  color: white;
+  text-decoration: underline;
+  font-size: 25px;
+  font-family: Times New Roman, serif;
+  /* italic */
+  font-style: italic;
 }

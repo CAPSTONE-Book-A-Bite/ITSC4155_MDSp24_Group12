@@ -1,225 +1,218 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url("../images/background.png") no-repeat center center/cover;
-    background-size: cover;
-}
-  
-  .restaurant-info {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: -20px;
-  }
-  
-  .booker-info {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: -70px;
-  }
-.booking-form {
-    width: 40%;
-    background-color: #fff;
-    border-radius: 5px;
-    height: 70%;
-    margin-left: 10%;
-    padding: 0;
-    margin-top: 10%;
-}
-
-
-
-h1 {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 20px;
-    background-color: #FA8D28;
-    padding: 20px 0;
-    margin-right: 20px;
-    margin-top: -20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    width: 100%;
-    display: block;
-    font-size: 48px;
-}
-
-h2, h3 {
-    color: #333;
-    padding: 10px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    display: flex;
-    gap: 10px; /* Adjust the spacing between the containers */
-}
-.input-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label[for="bookingDate"],
-.form-group label[for="bookingTime"]{
-    display: block;
-    padding: 20px;
-    color: #333;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 10%;
-    flex: 1; /* Take up the remaining space */
-}
-
-.form-group label[for="guests"] {
-    display: block;
-    padding: 20px;
-    color: #333;
-    font-weight: bold;
-    text-align: left;
-    margin-left: 30px;
-    flex: 1; /* Take up the remaining space */
-}
-
-.form-group input[type="date"],
-.form-group input[type="time"]{
-    width: 70%;
-    padding: 10px;
-    margin-top: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-left: 10px;
-    text-align: left;
-    /* center the inputs */
-    display: block;
-    margin: 0 auto 25px auto;
-
-
-}
-.form-group select {
-    width: 87%;
-    padding: 10px;
-    margin-top: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-left: 10px;
-    text-align: left;
-    /* center the inputs */
-    display: block;
-    margin: 0 auto 25px auto;
-    
-}
-
-.note {
-    font-size: 18px;
-    color: #666;
-    margin-top: 5px;
-    margin-left: 10px;
-    text-align: center;
-}
-
-button {
-    background-color: #FF4500;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
-
-button:hover {
-    background-color: #e03e00;
-}
-
-button.book-button {
-    /* place in center and margin from the top*/
-    margin: 0 auto;
-    display: block;
-    padding: 10px 20px 10px 20px;
-    width: 20%;
-    background-color: #FA8D28;
-    color: #fff;
-    font-size: large;
-    margin-top: 45px;
-
-}
-
-button.book-button:hover {
-    background-color: #e03e00;
-}
-
-.info-container {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Align children to the start of the flex container */
-    width: 40%; /* Set the width to fit the container */
-    /* move to the right */
-    padding: 20px;
-    border-radius: 5px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("../images/background.png") no-repeat center center/cover;
+  background-size: cover;
 }
 
 .restaurant-info {
-    width: auto; 
-    box-shadow: none;
-    padding: 20px;
-    margin-top: 10%;
-    /* move to the right */
-}
-.restaurant-image {
-    width: 364px;
-    height: 214px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    margin-top: -20px;
-    margin-left: -20px;
-    margin-right: -20px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: -20px;
 }
 
 .booker-info {
-    width: 324px; 
-    box-shadow: none;
-    padding: 20px;
-    /* move to the right */
-    margin-top: 10%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: -70px;
+}
+.booking-form {
+  width: 40%;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 70%;
+  margin-left: 10%;
+  padding: 0;
+  margin-top: 10%;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #fa8d28;
+  padding: 20px 0;
+  margin-right: 20px;
+  margin-top: -20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  display: block;
+  font-size: 48px;
+}
+
+h2,
+h3 {
+  color: #333;
+  padding: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px; /* Adjust the spacing between the containers */
+}
+.input-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label[for="bookingDate"],
+.form-group label[for="bookingTime"] {
+  display: block;
+  padding: 20px;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 10%;
+  flex: 1; /* Take up the remaining space */
+}
+
+.form-group label[for="guests"] {
+  display: block;
+  padding: 20px;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 30px;
+  flex: 1; /* Take up the remaining space */
+}
+
+.form-group input[type="date"],
+.form-group input[type="time"] {
+  width: 70%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: left;
+  /* center the inputs */
+  display: block;
+  margin: 0 auto 25px auto;
+}
+.form-group select {
+  width: 87%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: left;
+  /* center the inputs */
+  display: block;
+  margin: 0 auto 25px auto;
+}
+
+.note {
+  font-size: 18px;
+  color: #666;
+  margin-top: 5px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+button {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #e03e00;
+}
+
+button.book-button {
+  /* place in center and margin from the top*/
+  margin: 0 auto;
+  display: block;
+  padding: 10px 20px 10px 20px;
+  width: 20%;
+  background-color: #fa8d28;
+  color: #fff;
+  font-size: large;
+  margin-top: 45px;
+}
+
+button.book-button:hover {
+  background-color: #e03e00;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Align children to the start of the flex container */
+  width: 40%; /* Set the width to fit the container */
+  /* move to the right */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.restaurant-info {
+  width: auto;
+  box-shadow: none;
+  padding: 20px;
+  margin-top: 10%;
+  /* move to the right */
+}
+.restaurant-image {
+  width: 364px;
+  height: 214px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.booker-info {
+  width: 324px;
+  box-shadow: none;
+  padding: 20px;
+  /* move to the right */
+  margin-top: 10%;
 }
 
 h3.resteraunt-name {
-    color: #333;
-    margin-top: 10px;
-    padding: 0;
+  color: #333;
+  margin-top: 10px;
+  padding: 0;
 }
 
 h3.your-info {
-    color: #333;
-    margin-top: 10px;
-    padding: 0;
+  color: #333;
+  margin-top: 10px;
+  padding: 0;
 }
 
 h2.start-booking {
-    text-align: left;
-    margin-left: 43px;
+  text-align: left;
+  margin-left: 43px;
 }
 
-.warning-need{
-    color: red;
-    font-size: 0.8rem;
-    margin-top: 5px;
-    margin-left: 10px;
-    text-align: center;
+.warning-need {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  margin-left: 10px;
+  text-align: center;
 }
-

@@ -11,5 +11,7 @@
   "jsxBracketSameLine": false,
   "arrowParens": "always",
   "htmlWhitespaceSensitivity": "css",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "embeddedLanguageFormatting": "auto"
+
 }
