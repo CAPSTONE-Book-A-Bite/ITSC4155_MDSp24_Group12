@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         <th class="lastHeader"></th>
         </tr>`;
         let reservations = data.reservations; // Access the reservations array
-        console.log(JSON.stringify(reservations) + "before filter")
         if (Array.isArray(reservations)) {
           const userId = document.cookie.split(';').find(cookie => cookie.includes('userId')).split('=')[1];
           // filter reservations to only show the ones that are made by the user
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           reservations.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
           // filter reservations to only show the ones that are in the future
           reservations = reservations.filter(reservation => new Date(reservation.datetime) > new Date());
-          console.log(reservations);
           let reservationCount = 1;
           reservations.forEach(reservation => {
             const date = new Date(reservation.datetime).toDateString();
@@ -93,11 +91,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const customerName = document.getElementById('customer-name');
         // populate customer name with the user in the array that shares sameId in local storage
         const users = data.users;
-        console.log(`users: ${JSON.stringify(users)}`);
         const userId = document.cookie.split(';').find(cookie => cookie.includes('userId')).split('=')[1];
-        console.log(`userId: ${userId}`);
         const user = users.find(user => user.id == userId);
-        console.log(`user: ${JSON.stringify(user)}`)
         customerName.innerHTML = "Hello, "+ user.name;
       })
       .catch(error => {
@@ -116,7 +111,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return response.json(); // Parse the JSON data
       })
       .then(data => {
-        console.log(data);
         const restaurantContainer = document.getElementById('restaurant-list');
         const restaurants = data.users; // Access the restaurants array
         if (Array.isArray(restaurants)) {
@@ -135,7 +129,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     lastUpdated = new Date(data.reservation.created_at);
                     lastUpdated.setHours(lastUpdated.getHours() - 4);
                     lastUpdated = lastUpdated.toLocaleString();
-                   console.log(lastUpdated + "last updated");
                 })
                 .catch(error => {
                   console.error('Error fetching last updated time:', error);
@@ -146,7 +139,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const now = new Date();
                 const lastUpdatedTime = new Date(lastUpdated);
                 const timeDifference = Math.floor((now - lastUpdatedTime) / 1000 / 60);
-                console.log(timeDifference + "time difference")
                 if (timeDifference < 1) {
                   lastUpdated = 'Just now';
                 } else if (timeDifference < 60) {

@@ -7,7 +7,6 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
         body: formData
     });
     const data = await response.json();
-    console.log(data);
 
 
     // actually sign up the user
@@ -25,7 +24,6 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
     });
 
     const data2 = await response2.json();
-    console.log(data2);
     if (response2.status != 201) {
         throw new Error(data2.message);
     }

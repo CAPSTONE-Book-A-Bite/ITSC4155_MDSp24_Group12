@@ -5,7 +5,6 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const loginData = { email, password };
-    console.log(loginData);
     try {
         const response = await fetch("/api/users/login", {
             method: "POST",

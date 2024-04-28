@@ -101,15 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         const date = document.getElementById('bookingDate').value;
-        console.log(date);
         const dateTime = date + 'T' + bookingTime + ':00.000Z';
         const partySize = document.getElementById('guests').value;
         const restaurantName = document.getElementById('resteraunt-name').innerHTML;
         
         // dateTime is a string in the format "YYYY-MM-DDTHH:MM:SS:SSSZ"
- 
-        console.log(dateTime);
-        // submit form with needed data
+         // submit form with needed data
         // const { user_id, restaurant_id, num_guests, datetime } = req.body;
         const userId = document.cookie.split(';').find(cookie => cookie.includes('userId')).split('=')[1];
         const restaurantId = restaurant.id;
@@ -128,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.status != 200) {
                 throw new Error(data.error);
             }
-            console.log(data);
             // Redirect to confirmation page
             alert('Reservation created successfully');
             // reroute to confirmation page with the reservation id passed in as a query parameter and restaurant name trimmed of spaces
