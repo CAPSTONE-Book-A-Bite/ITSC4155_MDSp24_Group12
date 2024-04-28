@@ -1,6 +1,6 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { getAdmins, signup, login, lastReservation } from '../controllers/admins-controller.js'
+import { getAdmins, signup, login, lastReservation } from '../controllers/admins-controller.js';
 import bodyParser from 'body-parser';
 const adminRouter = express.Router();
 
@@ -21,7 +21,7 @@ adminRouter.post(
   signup
 );
 
-adminRouter.post('/login',  bodyParser.json(),login);
+adminRouter.post('/login', bodyParser.json(), login);
 
 adminRouter.get('/lastUpdated/:name', lastReservation);
 

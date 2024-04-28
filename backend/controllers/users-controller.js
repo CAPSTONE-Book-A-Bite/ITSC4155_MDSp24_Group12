@@ -10,7 +10,7 @@ const db = new pg.Client({
   }
 });
 // Just logging the connection
-db.connect()
+db.connect();
 
 const getUsers = async (req, res) => {
   let users;
@@ -25,7 +25,7 @@ const getUsers = async (req, res) => {
 // working here in signup
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
-  console.log(errors)
+  console.log(errors);
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
@@ -46,7 +46,7 @@ const signup = async (req, res, next) => {
       'User exists already, please login instead.',
       422
     );
-    return res.status(422).json({error: "User exists already, please login instead."});
+    return res.status(422).json({ error: "User exists already, please login instead." });
   }
 
 
@@ -56,34 +56,34 @@ const signup = async (req, res, next) => {
     email,
     password: password,
     phone
-};
+  };
 
-let result;
-try {
+  let result;
+  try {
     const queryText = 'INSERT INTO users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING *';
     const values = [createdUser.name, createdUser.email, createdUser.password, createdUser.phone];
     result = await db.query(queryText, values);
-    
+
     // If you need to access the newly inserted user data, you can retrieve it from the result
     //const insertedUser = result.rows[0];
-    
-} catch (err) {
+
+  } catch (err) {
     const error = new HttpError(
       'Signing up failed, please try again later.',
       500
     );
-    return res.status(500).json({error: "Signing up failed, please try again later."});
+    return res.status(500).json({ error: "Signing up failed, please try again later." });
   }
 
   res
     .status(200)
-    .json({message: "User created!", user: result.rows[0]});
+    .json({ message: "User created!", user: result.rows[0] });
 };
 
-const login = async (req,res,next) => {
-  console.log("login", req.body)
+const login = async (req, res, next) => {
+  console.log("login", req.body);
   const { email, password } = req.body;
-  console.log(email, password)
+  console.log(email, password);
 
   let existingUser;
 
@@ -94,7 +94,7 @@ const login = async (req,res,next) => {
       'Logging in failed, please try again later.',
       500
     );
-    return res.status(500).json({error: "Logging in failed, please try again later."});
+    return res.status(500).json({ error: "Logging in failed, please try again later." });
   }
 
   if (existingUser === undefined || existingUser.rows.length === 0) {
@@ -102,16 +102,16 @@ const login = async (req,res,next) => {
       'Invalid credentials, could not log you in.',
       403
     );
-    return res.status(403).json({error: "Invalid credentials, could not log you in."});
+    return res.status(403).json({ error: "Invalid credentials, could not log you in." });
   }
 
   let isValidPassword = false;
   try {
-    if (password === existingUser.rows[0].password){
+    if (password === existingUser.rows[0].password) {
       isValidPassword = true;
     };
   } catch (err) {
-    return res.status(500).json({error: "Could not log you in, please check your credentials and try again."});
+    return res.status(500).json({ error: "Could not log you in, please check your credentials and try again." });
   }
 
   if (!isValidPassword) {
@@ -119,12 +119,12 @@ const login = async (req,res,next) => {
       'Invalid credentials, could not log you in.',
       403
     );
-    return res.status(403).json({error: "Invalid credentials, could not log you in."});
+    return res.status(403).json({ error: "Invalid credentials, could not log you in." });
   }
   // success message just to see it logged in
   const success = "Logged in!";
-  console.log(success)
-  res.status(200).json({message: success, user: existingUser.rows[0]});
+  console.log(success);
+  res.status(200).json({ message: success, user: existingUser.rows[0] });
 };
 
 export { getUsers };

@@ -1,0 +1,19 @@
+{
+  "name": "book-a-bite",
+  "version": "1.0.0",
+  "description": "Welcome to our restaurant reservation application for Software Development 4155!",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "eslint": "^9.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.1.0"
+  }
+}

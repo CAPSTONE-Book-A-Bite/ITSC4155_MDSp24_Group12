@@ -41,16 +41,15 @@ const resizeAndSaveImage = (req, res, next) => {
 };
 
 
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'frontend/uploads')
+    cb(null, 'frontend/uploads');
   },
   filename: function (req, file, cb) {
     console.log('file' + file.originalname);
-    let restaurantName = req.body.restaurantName.replace(/\s/g, ''); // Remove spaces from restaurant name
-    console.log('restaurantName:', restaurantName)
-    cb(null, restaurantName + '.' +file.mimetype.split('/')[1]);
+    const restaurantName = req.body.restaurantName.replace(/\s/g, ''); // Remove spaces from restaurant name
+    console.log('restaurantName:', restaurantName);
+    cb(null, restaurantName + '.' + file.mimetype.split('/')[1]);
   }
 });
 
@@ -64,14 +63,14 @@ app.post('/api/upload', upload.single('image'), resizeAndSaveImage, (req, res) =
 
 app.get('/api/images/:restaurantName', async (req, res) => {
   const { restaurantName } = req.params;
-  console.log('restaurantName:', restaurantName)
+  console.log('restaurantName:', restaurantName);
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
   const directoryPath = path.join(__dirname, 'frontend/uploads');
   const extensions = ['jpeg', 'jpg', 'png', 'gif', 'webp']; // List of possible extensions
 
   try {
-    for (let ext of extensions) {
+    for (const ext of extensions) {
       const filePath = path.join(directoryPath, `resized-${restaurantName}.${ext}`);
       try {
         await fs.access(filePath);  // Check if file exists
@@ -92,7 +91,7 @@ app.get('/api/images/:restaurantName', async (req, res) => {
 app.use(express.static(__dirname + '/frontend'));
 
 app.get('/api/images/:restaurantName', (req, res) => {
-  const restaurantName = req.params.restaurantName
+  const restaurantName = req.params.restaurantName;
   res.sendFile(__dirname + `/frontend/uploads/${restaurantName}.jpeg`);
 }
 );
@@ -115,7 +114,7 @@ app.get('/about', (req, res) => {
 
 app.get('/customer', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/customer.html');
-} );
+});
 
 app.get('/book', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/book.html');
@@ -132,7 +131,7 @@ app.get('/hostHome', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/host.html');
 });
 
-app.get('/signup', (req, res) => { 
+app.get('/signup', (req, res) => {
   res.sendFile(__dirname + '/frontend/html/signup.html');
 });
 
@@ -174,11 +173,11 @@ db.connect()
 
 app.listen(3001, function () {
   console.log('App listening on port 3001!');
-  console.log('Press Ctrl+C to quit.')
-  console.log('go to http://localhost:3001/api/users to see users')
+  console.log('Press Ctrl+C to quit.');
+  console.log('go to http://localhost:3001/api/users to see users');
 });
 
-app.get('/', (req, res) => { 
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/frontend/index.html');
 });
 

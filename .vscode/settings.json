@@ -1,3 +1,7 @@
 {
-    "prettier.bracketSameLine": true
+    "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" },
+    "editor.formatOnSave": true, 
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "eslint.experimental.useFlatConfig": true,
+
 }

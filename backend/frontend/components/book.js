@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(error.message);
         });
 
-        // fetch the users information
-        fetch('http://localhost:3001/api/users')
+    // fetch the users information
+    fetch('http://localhost:3001/api/users')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch users');
@@ -104,14 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateTime = date + 'T' + bookingTime + ':00.000Z';
         const partySize = document.getElementById('guests').value;
         const restaurantName = document.getElementById('resteraunt-name').innerHTML;
-        
+
         // dateTime is a string in the format "YYYY-MM-DDTHH:MM:SS:SSSZ"
-         // submit form with needed data
+        // submit form with needed data
         // const { user_id, restaurant_id, num_guests, datetime } = req.body;
         const userId = document.cookie.split(';').find(cookie => cookie.includes('userId')).split('=')[1];
         const restaurantId = restaurant.id;
         const numGuests = partySize;
-        
+
         const reservationData = { user_id: userId, restaurant_id: restaurantId, num_guests: numGuests, datetime: dateTime };
         try {
             const response = await fetch('http://localhost:3001/api/reservations', {
@@ -148,6 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     });
-    
+
 }
 );

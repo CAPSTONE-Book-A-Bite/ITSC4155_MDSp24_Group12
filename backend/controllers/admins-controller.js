@@ -10,7 +10,7 @@ const db = new pg.Client({
   }
 });
 // Just logging the connection
-db.connect()
+db.connect();
 
 const getAdmins = async (req, res) => {
   let admins;
@@ -46,7 +46,7 @@ const signup = async (req, res, next) => {
       'Admin exists already, please login instead.',
       422
     );
-    return res.status(422).json({ message: 'Admin exists already, please login instead.'});
+    return res.status(422).json({ message: 'Admin exists already, please login instead.' });
   }
 
 
@@ -56,33 +56,33 @@ const signup = async (req, res, next) => {
     name,
     email,
     password: password
-};
+  };
 
-let result;
-try {
+  let result;
+  try {
     // Assuming db is your PostgreSQL client
     const queryText = 'INSERT INTO restaurants (name, email, password) VALUES ($1, $2, $3) RETURNING *';
     const values = [createdAdmin.name, createdAdmin.email, createdAdmin.password];
     result = await db.query(queryText, values);
-    
+
     // If you need to access the newly inserted user data, you can retrieve it from the result
     //const insertedUser = result.rows[0];
-    
+
     // Further logic can be added here if needed
-} catch (err) {
+  } catch (err) {
     const error = new HttpError(
       'Signing up failed, please try again later.',
       500
     );
     return res.status(500).json({ message: 'Signing up failed, please try again later.' });
-}
+  }
 
   res.status(201).json({ name: createdAdmin.name, email: createdAdmin.email });
 };
 
-const login = async (req,res,next) => {
+const login = async (req, res, next) => {
 
-  console.log(req.body)
+  console.log(req.body);
   const { email, password } = req.body;
 
   let existingAdmin;
@@ -107,7 +107,7 @@ const login = async (req,res,next) => {
 
   let isValidPassword = false;
   try {
-    if (password === existingAdmin.rows[0].password){
+    if (password === existingAdmin.rows[0].password) {
       isValidPassword = true;
     };
   } catch (err) {
@@ -126,7 +126,7 @@ const login = async (req,res,next) => {
     return res.status(403).json({ message: 'Invalid credentials, could not log you in.' });
   }
   // succes message just to see it logged in
-  return res.status(200).json({ hostId: existingAdmin.rows[0].id, hostName: existingAdmin.rows[0].name});
+  return res.status(200).json({ hostId: existingAdmin.rows[0].id, hostName: existingAdmin.rows[0].name });
 
 };
 

@@ -8,58 +8,58 @@ import { sendSMS } from "../util/smsSender.js";
 const db = new pg.Client({
     connectionString: 'postgres://zcqtvzxv:DBBIBhx8y-dsnf6jhniVULbwo-pNxeE0@baasu.db.elephantsql.com/zcqtvzxv',
     ssl: {
-      rejectUnauthorized: false // Only set this if your ElephantSQL instance requires it
+        rejectUnauthorized: false // Only set this if your ElephantSQL instance requires it
     }
 });
 
 // Just logging the connection
-db.connect()
+db.connect();
 
-const getReservations = async (req,res,next) => {
+const getReservations = async (req, res, next) => {
     let reservation;
     try {
         reservation = await db.query('select * from reservations;');
     } catch (err) {
         const error = new HttpError(
-          'Something went wrong, could not find a reservation.',
-          500
+            'Something went wrong, could not find a reservation.',
+            500
         );
         return res.status(500).json({ error: error });
     }
     res.json({ reservations: reservation.rows });
 };
 
-const getReservationById = async (req,res,next) => {
+const getReservationById = async (req, res, next) => {
     const reservationId = req.params.rid;
     //console.log(reservationId);
 
     let reservation;
     try {
         reservation = await db.query('SELECT * FROM reservations WHERE id = $1;', [reservationId]);
-        console.log(reservation.rows)
+        console.log(reservation.rows);
     } catch (err) {
         const error = new HttpError(
-          'Something went wrong, could not find a reservation.',
-          500
+            'Something went wrong, could not find a reservation.',
+            500
         );
         return res.status(500).json({ error: error });
     }
 
     if (!reservation) {
         const error = new HttpError(
-          'Could not find reservation for the provided id.',
-          404
+            'Could not find reservation for the provided id.',
+            404
         );
         return res.status(404).json({ error: error });
     }
-    
+
     res.json({ reservation: reservation.rows });
 };
 
-const getReservationsByUserId = async (req,res,next) => {
+const getReservationsByUserId = async (req, res, next) => {
     const userId = req.params.uid;
     let reservations;
-    try{
+    try {
         reservations = await db.query('SELECT * FROM reservations WHERE user_id = $1;', [userId]);
     } catch (err) {
         const error = new HttpError(
@@ -109,7 +109,7 @@ const createReservation = async (req, res, next) => {
         // Check if a reservation already exists for the specified time and table number
         const existingReservation = await db.query(
             'SELECT * FROM reservations WHERE datetime = $1 AND restaurant = $2',
-            [ datetime, restaurant_id]
+            [datetime, restaurant_id]
         );
 
         if (existingReservation.rows.length > 0) {
@@ -125,7 +125,7 @@ const createReservation = async (req, res, next) => {
             [user_id, num_guests, datetime, user.name, user.email, user.phone_number, restaurant.name]
         );
 
-        return res.json({ reservation: createdReservation.rows[0] })
+        return res.json({ reservation: createdReservation.rows[0] });
     } catch (err) {
         console.error('Error creating reservation:', err);
         const error = new HttpError('Creating reservation failed, please try again.', 500);
@@ -155,7 +155,7 @@ const updateReservation = async (req, res, next) => {
 
         // If reservation not found
         if (!reservation) {
-    
+
             return res.status(404).json({ message: 'Could not find reservation for the provided id.' });
         }
 
@@ -182,7 +182,7 @@ const deleteReservation = async (req, res, next) => {
 
     try {
         const reservation = await db.query('DELETE FROM reservations WHERE id = $1', [reservationId]);
-        
+
         if (reservation.rowCount == 0) {
             const error = new HttpError('Could not find a reservation for this id.', 404);
             return res.status(404).json({ error: error });
