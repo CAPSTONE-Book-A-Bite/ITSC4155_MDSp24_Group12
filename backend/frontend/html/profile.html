@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Description to match platform usage-->
+    <meta
+      name="description"
+      content="Book-A-Bite is a web application that allows users to reserve tables at restaurants."
+    />
+    <!--Title to match platform name -->
+    <title>Book-A-Bite</title>
+    <!--Link to css file -->
+    <link rel="stylesheet" href="../css/profile.css" />
+    <header-component></header-component>
+  </head>
+
+  <body>
+    <div class="back-button" id="back-button">&lt; Back</div>
+
+    <div class="profile-edit-container">
+      <h2>Edit Your Profile</h2>
+      <form class="profile-form" id="profile-form">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+        />
+        <label for="current-password">Current Password:</label>
+        <input
+          type="password"
+          id="current-password"
+          name="current-password"
+          placeholder="Current Password"
+        />
+        <label for="new-password">New Password:</label>
+        <input
+          type="password"
+          id="new-password"
+          name="new-password"
+          placeholder="New Password*"
+          required
+        />
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <label for="phone">Phone Number:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone Number"
+          required
+        />
+        <input type="submit" value="Save Changes" class="form-button" />
+      </form>
+    </div>
+  </body>
+  <script src="../components/header.js"></script>
+  <script src="../components/profile.js"></script>
+</html>

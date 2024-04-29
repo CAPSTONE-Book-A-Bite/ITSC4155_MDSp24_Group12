@@ -144,6 +144,10 @@ app.get("/confirmation", (req, res) => {
   res.sendFile(__dirname + "/frontend/html/confirmation.html");
 });
 
+app.get("/profile", (req, res) => {
+  res.sendFile(__dirname + "/frontend/html/profile.html");
+});
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(

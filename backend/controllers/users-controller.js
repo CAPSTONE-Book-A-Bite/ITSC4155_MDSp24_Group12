@@ -129,12 +129,10 @@ const login = async (req, res, next) => {
       isValidPassword = true;
     }
   } catch (err) {
-    return res
-      .status(500)
-      .json({
-        error:
-          "Could not log you in, please check your credentials and try again.",
-      });
+    return res.status(500).json({
+      error:
+        "Could not log you in, please check your credentials and try again.",
+    });
   }
 
   if (!isValidPassword) {
@@ -152,6 +150,34 @@ const login = async (req, res, next) => {
   res.status(200).json({ message: success, user: existingUser.rows[0] });
 };
 
+const getUserById = async (req, res) => {
+  const userId = req.params.uid;
+  let user;
+  try {
+    user = await db.query("SELECT * FROM users WHERE id = $1;", [userId]);
+  } catch (error) {
+    res.send;
+  }
+  res.json({ user: user.rows[0] });
+};
+
+const updateUser = async (req, res) => {
+  const userId = req.params.uid;
+  const { name, email, phone, password } = req.body;
+  let user;
+  try {
+    user = await db.query(
+      "UPDATE users SET name = $1, email = $2, phone_number = $3, password = $4 WHERE id = $5 RETURNING *;",
+      [name, email, phone, password, userId]
+    );
+  } catch (error) {
+    res.send;
+  }
+  res.json({ user: user.rows[0] });
+};
+
 export { getUsers };
 export { signup };
 export { login };
+export { getUserById };
+export { updateUser };

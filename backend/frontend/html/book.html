@@ -34,7 +34,8 @@
                 id="bookingTime"
                 name="bookingTime"
                 step="600"
-                onchange="validateTime(this)"
+                min="07:00"
+                max="22:00"
                 required
               />
             </div>
@@ -72,7 +73,7 @@
           <p id="your-name">Name: LastName, FirstName</p>
           <p id="your-email">Email: username@example.com</p>
           <p id="your-phone">Phone: (1000-000-0000)</p>
-          <button>Edit info</button>
+          <button id="edit-info">Edit info</button>
         </div>
       </div>
     </div>

@@ -14,27 +14,47 @@ window.onload = function () {
   let yyyy = today.getFullYear();
   let minDate = yyyy + "-" + mm + "-" + dd;
 
+  console.log(minDate);
+
   // Set the min attribute to today's date at 07:00 AM
   bookingDate.setAttribute("min", minDate);
+  bookingDate.setAttribute("value", minDate);
 
   // Event listener to check the time is in the future
   let bookingTime = document.getElementById("bookingTime");
-  bookingTime.addEventListener("change", () => {
-    let time = bookingTime.value;
-    let hour = parseInt(time.split(":")[0]);
-    let minute = parseInt(time.split(":")[1]);
-    let date = bookingDate.value;
-    let year = parseInt(date.split("-")[0]);
-    let month = parseInt(date.split("-")[1]);
-    let day = parseInt(date.split("-")[2]);
-    let bookingDateTime = new Date(year, month - 1, day, hour, minute);
-    let currentDateTime = new Date();
-    if (bookingDateTime < currentDateTime) {
-      bookingTime.setCustomValidity("Please select a future time");
-    } else {
-      bookingTime.setCustomValidity("");
+
+  // set booking time to now
+  let hours = today.getHours();
+  let minutes = today.getMinutes();
+  let time = hours + ":" + minutes;
+  bookingTime.setAttribute("value", time);
+
+  //ensure the time is in the future
+  bookingTime.addEventListener("change", function () {
+    let bookingDate = document.getElementById("bookingDate").value;
+
+    let bookingTime = document.getElementById("bookingTime").value;
+    // format is YYYY-MM-DD
+    let date = new Date(bookingDate);
+    let time = bookingTime.split(":");
+    let hours = parseInt(time[0]);
+    let minutes = parseInt(time[1]);
+    let bookingDateTime = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() + 1,
+      hours,
+      minutes
+    );
+    console.log(bookingDateTime);
+    console.log(today);
+    if (bookingDateTime < today) {
+      alert("Please select a time in the future");
+      bookingTime.value = time;
     }
   });
+
+  // set value of date to today
   // update the start-booking h2 text with user's name
   const userName = document.cookie
     .split(";")
@@ -170,15 +190,6 @@ window.onload = function () {
   });
 };
 
-function validateTime(input) {
-  const time = input.value;
-  if (time) {
-    const [hours, minutes] = time.split(":").map(Number);
-    const validMinutes = Math.round(minutes / 10) * 10;
-    if (minutes !== validMinutes) {
-      input.value = `${hours.toString().padStart(2, "0")}:${validMinutes
-        .toString()
-        .padStart(2, "0")}`;
-    }
-  }
-}
+document.getElementById("edit-info").addEventListener("click", function () {
+  window.location.href = "/profile";
+});
