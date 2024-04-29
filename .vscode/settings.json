@@ -2,7 +2,7 @@
     "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" },
     "editor.formatOnSave": true, 
     "[javascript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "eslint.experimental.useFlatConfig": true,
     "[html]" : {
