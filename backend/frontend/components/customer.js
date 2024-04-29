@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+window.onload = function () {
   //check if user is logged in and redirect to login page if not
   const userId = document.cookie
     .split(";")
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!userId) {
     window.location.href = "/login";
   }
-  await fetch("http://localhost:3001/api/reservations")
+  fetch("http://localhost:3001/api/reservations")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to fetch reservations");
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // fetch userInfo
 
-  await fetch("http://localhost:3001/api/users")
+  fetch("http://localhost:3001/api/users")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to fetch users");
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // fetch resteraunts the user can book
 
-  await fetch("http://localhost:3001/api/admin")
+  fetch("http://localhost:3001/api/admin")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to fetch restaurants");
@@ -243,4 +243,4 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       }
     });
-});
+};

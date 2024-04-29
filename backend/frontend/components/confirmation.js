@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = function () {
   //check if user is logged in and redirect to login page if not
   const userId = document.cookie
     .split(";")
@@ -86,4 +86,4 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching reservation:", error);
       // Handle error
     });
-});
+};

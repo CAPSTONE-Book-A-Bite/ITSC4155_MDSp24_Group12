@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function () {
   // check if the host is logged in
   const hostName = getCookie("hostName");
   if (!hostName) {
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Error:", error);
     });
-});
+};
 
 // function to cancel a reservation when the cancel button is clicked
 

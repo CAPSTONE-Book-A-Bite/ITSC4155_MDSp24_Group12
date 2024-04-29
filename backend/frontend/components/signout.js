@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+window.onload = function () {
   //change userName on the id logout-text
   if (document.cookie.includes("hostName")) {
     document.getElementById(
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.cookie = "userName=; max-age=0";
   document.cookie = "hostId=; max-age=0";
   document.cookie = "hostName=; max-age=0";
-});
+};
 
 document.querySelector(".sign-in").addEventListener("click", () => {
   window.location.href = "/login";

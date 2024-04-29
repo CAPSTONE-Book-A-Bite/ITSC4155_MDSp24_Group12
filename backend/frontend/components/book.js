@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = function () {
   //check if user is logged in and redirect to login page if not
   const userId = document.cookie
     .split(";")
@@ -168,4 +168,17 @@ document.addEventListener("DOMContentLoaded", () => {
       bookingForm.reset();
     }
   });
-});
+};
+
+function validateTime(input) {
+  const time = input.value;
+  if (time) {
+    const [hours, minutes] = time.split(":").map(Number);
+    const validMinutes = Math.round(minutes / 10) * 10;
+    if (minutes !== validMinutes) {
+      input.value = `${hours.toString().padStart(2, "0")}:${validMinutes
+        .toString()
+        .padStart(2, "0")}`;
+    }
+  }
+}

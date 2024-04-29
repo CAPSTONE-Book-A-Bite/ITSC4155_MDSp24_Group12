@@ -35,7 +35,7 @@ document
     }
   });
 
-document.addEventListener("DOMContentLoaded", async () => {
+window.onload = function () {
   // Check if user is already logged in
   const hostId = getCookie("hostId");
   if (hostId) {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (userId) {
     window.location.href = "/customer";
   }
-});
+};
 
 document
   .getElementById("register-form")
