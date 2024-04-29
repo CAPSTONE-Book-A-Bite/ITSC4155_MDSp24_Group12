@@ -48,6 +48,7 @@ input[type="file"] {
   margin-bottom: 30px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  background-color: white;
 }
 
 button {
