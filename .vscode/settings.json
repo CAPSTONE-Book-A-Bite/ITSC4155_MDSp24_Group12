@@ -1,3 +1,14 @@
 {
-    "prettier.bracketSameLine": true
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" },
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.experimental.useFlatConfig": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

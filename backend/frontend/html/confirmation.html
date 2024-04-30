@@ -1,47 +1,55 @@
 <html lang="en">
-    <!-- Create Customer page that is after you login, stores the reservations the customer has and also displays the resteraunts which a customer can select to book from-->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Description to match platform usage-->
-        <meta name="description"
-          content="Book-A-Bite is a web application that allows users to reserve tables at restaurants.">
-        <!--Title to match platform name -->
-        <title>Book-A-Bite</title>
-        <!--Link to css file -->
-        <link rel="stylesheet" href="../css/confirmation.css">
-      </head>
-<body>
-  <header-component></header-component>
-  <div class="container">
-    <div class="booking-form">
+  <!-- Create Customer page that is after you login, stores the reservations the customer has and also displays the resteraunts which a customer can select to book from-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Description to match platform usage-->
+    <meta
+      name="description"
+      content="Book-A-Bite is a web application that allows users to reserve tables at restaurants."
+    />
+    <!--Title to match platform name -->
+    <title>Book-A-Bite</title>
+    <!--Link to css file -->
+    <link rel="stylesheet" href="../css/confirmation.css" />
+  </head>
+  <body>
+    <header-component></header-component>
+    <div class="container">
+      <div class="booking-form">
         <h1>Online Booking</h1>
         <div class="confirmation">
           <h4>Thank you for booking with us!</h4>
 
-            <p class ="reservation-created" id="reservation-created">Reservation Confirmed! Your Book-A-Bite Reservation ID for Restaurant A is # under the name LastName, FirstName
-                Booking Date: MM/DD/YYYY 4:15 PM for 4 guests</p>
-            <p class="note" id="note">Please arrive 15 minutes before your reservation time. If you need to cancel or make changes to your reservation, please contact the restaurant directly.</p>
-            <a href="/customer">Book or view your previous reservations</a>
+          <p class="reservation-created" id="reservation-created">
+            Reservation Confirmed! Your Book-A-Bite Reservation ID for
+            Restaurant A is # under the name LastName, FirstName Booking Date:
+            MM/DD/YYYY 4:15 PM for 4 guests
+          </p>
+          <p class="note" id="note">
+            Please arrive 15 minutes before your reservation time. If you need
+            to cancel or make changes to your reservation, please contact the
+            restaurant directly.
+          </p>
+          <a href="/customer">Book or view your previous reservations</a>
         </div>
-
-    </div>
-    <div class="info-container">
-      <div class="restaurant-info">
-          <img id="restaurant-image" class="restaurant-image"><img>
+      </div>
+      <div class="info-container">
+        <div class="restaurant-info">
+          <img id="restaurant-image" class="restaurant-image" /><img />
           <h3 class="resteraunt-name" id="resteraunt-name">Restaurant A</h3>
           <p>Open Hours: M - F: 7:00 AM - 10:00 P</p>
-      </div>
-      <div class="booker-info">
+        </div>
+        <div class="booker-info">
           <h3 class="your-info">Your Information</h3>
           <p id="your-name">Name: LastName, FirstName</p>
           <p id="your-email">Email: username@example.com</p>
           <p id="your-phone">Phone: (1000-000-0000)</p>
           <button>Edit info</button>
+        </div>
       </div>
-  </div>
-</div>
-</body>
-<script src="../components/header.js"></script>
-<script src="../components/confirmation.js"></script>
+    </div>
+  </body>
+  <script src="../components/header.js"></script>
+  <script src="../components/confirmation.js"></script>
 </html>

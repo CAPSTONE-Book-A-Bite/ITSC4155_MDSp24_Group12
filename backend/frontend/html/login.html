@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Description to match platform usage-->
-        <meta name="description"
-          content="Book-A-Bite is a web application that allows users to reserve tables at restaurants.">
-        <!--Title to match platform name -->
-        <title>Book-A-Bite</title>
-        <!--Link to css file -->
-        <link rel="stylesheet" href="../css/login.css">
-      </head>
-<body>
-  <header-component></header-component>
-  <div class="container">
-  <div class ="imagea">
-    <img src="../images/loginPage.png" alt="Person Eating">
-  </div>
-  <div class="login-container" id="login-container">
-    <h2>User Login</h2>
-    <form id="login-form">
-        <div class="form-group">
-            <input type="text" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button class="login-button" type="submit">Login</button>
-    </form>
-    <div class="form-group">
-        <form id="register-form">
-        <h3 class="register-label">Don't have an account? Register here:</h3>
-        <button type="submit" class="signup-btn">Register</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Description to match platform usage-->
+    <meta
+      name="description"
+      content="Book-A-Bite is a web application that allows users to reserve tables at restaurants."
+    />
+    <!--Title to match platform name -->
+    <title>Book-A-Bite</title>
+    <!--Link to css file -->
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <header-component></header-component>
+    <div class="container">
+      <div class="imagea">
+        <img src="../images/User_Login_Page.png" alt="Person Eating" />
+      </div>
+      <div class="login-container" id="login-container">
+        <h2>User Login</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <input type="text" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button class="login-button" type="submit">Login</button>
         </form>
+        <div class="form-group">
+          <form id="register-form">
+            <h3 class="register-label">
+              Don't have an account? Register here:
+            </h3>
+            <button type="submit" class="signup-btn">Register</button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
-</body>
-<script src="../components/header.js"></script>
-<script type="module" src="../components/login.js"></script>
+  </body>
+  <script src="../components/header.js"></script>
+  <script type="module" src="../components/login.js"></script>
 </html>

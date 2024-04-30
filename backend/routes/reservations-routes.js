@@ -1,6 +1,6 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { getReservations, getReservationById, getReservationsByUserId, createReservation, updateReservation, deleteReservation} from '../controllers/reservations-controller.js'
+import { getReservations, getReservationById, getReservationsByUserId, createReservation, updateReservation, deleteReservation } from '../controllers/reservations-controller.js'
 import bodyParser from 'body-parser';
 const reservationRouter = express.Router();
 
@@ -12,7 +12,7 @@ reservationRouter.get('/:rid', getReservationById);
 reservationRouter.get('/user/:uid', getReservationsByUserId);
 
 reservationRouter.post(
-  '/',  bodyParser.json(),
+  '/', bodyParser.json(),
   createReservation);
 
 reservationRouter.patch(
@@ -20,11 +20,11 @@ reservationRouter.patch(
   bodyParser.json(),
   [
     check('table_number')
-        .not()
-        .isEmpty(),
+      .not()
+      .isEmpty(),
     check('num_guests')
-        .not()
-        .isEmpty()
+      .not()
+      .isEmpty()
   ],
   updateReservation
 );

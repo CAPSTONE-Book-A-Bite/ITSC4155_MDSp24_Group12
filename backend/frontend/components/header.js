@@ -1,10 +1,10 @@
 class Header extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        this.innerHTML = `
+  connectedCallback() {
+    this.innerHTML = `
 <style>
         /* Header styles -Start****************************************/
 header {
@@ -81,7 +81,7 @@ header.navbar {
             </div>
         </header>
         `;
-    }
+  }
 }
 
-customElements.define('header-component', Header);
+customElements.define("header-component", Header);
