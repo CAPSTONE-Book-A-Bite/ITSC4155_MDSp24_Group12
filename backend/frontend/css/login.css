@@ -8,34 +8,44 @@ body {
   height: 100vh;
   background: url("../images/background.png") no-repeat center center/cover;
   background-size: cover;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .container {
-  margin-top: 135px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .login-container {
   background-color: #ffa800;
   padding: 20px;
-  border-radius: 80px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 20%;
-  left: 70%;
   height: auto;
   border: #333 solid 3px;
   align-items: center;
   flex-direction: column;
+
+  /* Rectangle 9 */
+
+  width: 466px;
+  height: 639px;
+
+  border: 5px solid #000000;
+  border-radius: 100px;
+  margin-top: 150px;
 }
 
 .login-container h2 {
-  color: white;
+  font-family: "Montagu Slab";
+  font-style: normal;
+  font-weight: 700;
   font-size: 48px;
-  margin-bottom: 20px;
+  line-height: 62px;
   text-align: center;
+
+  color: #ffffff;
 }
 
 .form-group {
@@ -51,8 +61,13 @@ body {
   border: 2px solid #ccc;
   border-radius: 40px;
   display: block;
-  margin: 10px auto;
-  height: 40px;
+  margin-left: auto;
+  margin-top: -10px;
+  margin-right: auto;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 100px;
+  height: 60px;
 }
 .login-button {
   width: 80%;
@@ -64,7 +79,7 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: block;
-  margin: 10px auto;
+  margin: 50px auto 0 auto;
   height: 60px;
 }
 
@@ -90,10 +105,13 @@ button:focus {
 }
 
 .imagea img {
-  width: 60%;
-  height: 60%;
-  border: 2px solid #ccc;
-  margin-bottom: 150px;
+  box-sizing: border-box;
+  position: relative;
+  width: 758px;
+  height: 494px;
+  border: 5px solid #000000;
+  margin-bottom: 30px;
+  margin-right: 100px;
 }
 
 .alert-danger {

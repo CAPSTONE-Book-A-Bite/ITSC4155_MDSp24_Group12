@@ -1,0 +1,77 @@
+body {
+  background: url("../images/background.png") no-repeat center center/cover;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.massiveImage {
+  align-self: flex-end;
+  width: 275%;
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+h1 {
+  font-family: "Montagu Slab";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 62px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+p {
+  font-family: "Montagu Slab";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  text-align: center;
+  color: #ffffff;
+  width: 70%;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 150px;
+}
+.secondText {
+  margin-top: -70px;
+  margin-bottom: 50px;
+}
+.aboutUsText a {
+  font-family: "Montagu Slab";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  text-align: center;
+  margin-top: 70px;
+  color: #ffffff;
+  display: block;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* italic */
+  text-decoration: underline;
+  font-style: italic;
+}
