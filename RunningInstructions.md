@@ -7,7 +7,7 @@ To run this application, follow the steps below:
 2. Clone the repository to your local machine:
 
    ```bash
-   git clone <repository_url>
+   git clone <https://github.com/CAPSTONE-Book-A-Bite/ITSC4155_MDSp24_Group12.git>
    ```
 
 3. Navigate to the `backend` folder of the cloned repository:
@@ -28,6 +28,6 @@ To run this application, follow the steps below:
    node app.js
    ```
 
-6. Open your web browser and visit [http://localhost:3000](http://localhost:3000) to access the application.
+6. Open your web browser and visit [http://localhost:3001](http://localhost:3001) to access the application.
 
 That's it! You should now be able to run the application using Node.js and Express.
