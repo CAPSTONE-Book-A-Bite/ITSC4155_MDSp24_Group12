@@ -164,7 +164,8 @@ app.use("/api/admin", adminRouter);
 app.use("/api/reservations", reservationRouter);
 
 const db = new pg.Client({
-  connectionString: process.env.CONNECTION_STRING,
+  connectionString:
+    "postgres://zcqtvzxv:DBBIBhx8y-dsnf6jhniVULbwo-pNxeE0@baasu.db.elephantsql.com/zcqtvzxv",
   ssl: {
     rejectUnauthorized: false, // Only set this if your ElephantSQL instance requires it
   },

@@ -3,7 +3,6 @@ import moment from "moment";
 import { validationResult } from "express-validator";
 
 import HttpError from "../models/http-error.js";
-import { sendSMS } from "../util/smsSender.js";
 
 const db = new pg.Client({
   connectionString:
@@ -125,12 +124,10 @@ const createReservation = async (req, res, next) => {
 
     if (existingReservation.rows.length > 0) {
       // If a reservation already exists, return an error response
-      return res
-        .status(409)
-        .json({
-          message:
-            "A reservation already exists for the specified restaurant, time and table number.",
-        });
+      return res.status(409).json({
+        message:
+          "A reservation already exists for the specified restaurant, time and table number.",
+      });
     }
 
     // Insert a new reservation into the database
