@@ -31,7 +31,7 @@ Welcome to our restaurant reservation application for Software Development 4155!
 
 _We are creating a web application for restaurant reservations. We are trying to reduce the workload on restaurant hosts and servers by reducing the number of calls and paper writing that the hosts and servers would have to perform when customers want to schedule a reservation. This would also help customers as they can log on to check available times and then set a reservation, all without making a single phone call. This provides a better system for customers, and it saves restaurant employees time and, thus, money._
 
-![](ReadMeReferences\Activity_diagram_Group12.png)
+![](./ReadMeReferences/Activity_diagram_Group12.png)
 
 ![](https://lh7-us.googleusercontent.com/Ke8oZRMiv2yDAXtk6vI42-iodCa0WRWpYXO-JswdSllZ4HsEv1J1ktLRnNbxNqV-iT5NzDR_hjrAZOAAgyuf1_4O73E9OjVITy4pOZBoTbjUG9LjlP4f6hGiLYdN33mlYot0bjvKYVXkcnJ0RG8ot0o)
 
