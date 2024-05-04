@@ -7,7 +7,7 @@ To run this application, follow the steps below:
 2. Clone the repository to your local machine:
 
    ```bash
-   git clone <https://github.com/CAPSTONE-Book-A-Bite/ITSC4155_MDSp24_Group12.git>
+   git clone https://github.com/CAPSTONE-Book-A-Bite/ITSC4155_MDSp24_Group12.git
    ```
 
 3. Navigate to the `backend` folder of the cloned repository:
